@@ -1,23 +1,27 @@
-"use client";
-
-import Head from "@/components/Head";
 import NavBar from "@/components/NavBar";
 import { Project } from "@/data/models/Proj";
 import projects from "@/data/projects.json";
 
 import Hero from "@/components/Hero";
+import { generate_metadata } from "@/utils/generate_metadata";
+import { Metadata } from "next";
+
+export const metadata: Metadata = generate_metadata({
+  title: "OWBIRD | Dev",
+  desc: `
+  I speak the languages of devices that understand 0s and 1s only.
+  Sometimes they listen.
+  Sometimes.
+  `,
+  image: "",
+});
 
 function App() {
   return (
     <>
       <meta charSet="utf-8" />
       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-      <Head
-        title="Owbird | Dev"
-        desc="Owbird | Dev"
-        url="https://owbird.vercel.app/"
-        image=""
-      />
+
       {/* Favicons */}
       {/* =======================================================
   * Template Name: DevFolio
