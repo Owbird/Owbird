@@ -1,0 +1,110 @@
+[
+  {
+    "name": "X-GPT",
+    "image": "https://github.com/Owbird/X-GPT/raw/main/public/logo.png",
+    "id": "X-GPT",
+    "github": "https://github.com/owbird/X-GPT",
+    "isPersonal": true,
+    "url": "",
+    "short_description": "A chrome extension to import website data and text files into ChatGPT and also pretty print GPT's responses"
+  },
+  {
+    "name": "SVault",
+    "image": "https://ui-avatars.com/api/?name=SVault&size=512",
+    "id": "SVault",
+    "github": "https://github.com/owbird/SVault",
+    "isPersonal": true,
+    "url": "",
+    "short_description": "A desktop application that enables users to encrypt their files locally or securely share."
+  },
+  {
+    "name": "Youtube Manager",
+    "image": "https://github.com/Owbird/Yt-Mgr/raw/main/assets/ss.png",
+    "id": "Yt-Mgr",
+    "github": "https://github.com/owbird/yt-mgr",
+    "isPersonal": true,
+    "url": "https://yt-mgr.vercel.app/",
+    "short_description": "A Simple Website to download YouTube videos in different formats with playlist support "
+  },
+  {
+    "name": "Smart Bible",
+    "image": "https://ui-avatars.com/api/?name=Smart-Bible&size=512",
+    "id": "Smart-Bible",
+    "github": "https://github.com/owbird/Smart-Bible",
+    "isPersonal": true,
+    "url": "",
+    "short_description": "A Search Engine for the Bible using open source Machine Learning models "
+  },
+  {
+    "name": "Github Friends",
+    "image": "/assets/img/ss/gh-friends.png",
+    "id": "Gh-Friends",
+    "github": "https://github.com/owbird/gh-friends",
+    "isPersonal": true,
+    "url": "",
+    "short_description": "A Graph network visualization of a Github user's network. "
+  },
+  {
+    "name": "WhatsApp || Telegram Chat Analysis",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "id": "WhatsApp-Telegram-Chat-Analysis",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": true,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  },
+  {
+    "id": "Dawurobo-X",
+    "name": "Dawurobo X",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": false,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  },
+  {
+    "name": "Dawurobotel",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "id": "Dawurobotel",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": false,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  },
+  {
+    "name": "Dawurobo SMS",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "id": "Dawurobo-SMS",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": false,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  },
+  {
+    "name": "Kubi Telemedicine Client",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "id": "Kubi-Telemedicine-Client",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": false,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  },
+  {
+    "name": "Kubi Telemedicine Doctor",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "id": "Kubi-Telemedicine-Doctor",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": false,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  },
+  {
+    "name": "EVASF Books",
+    "image": "https://ui-avatars.com/api/?name=${proj.name}&size=512",
+    "id": "EVASF=Books",
+    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
+    "isPersonal": false,
+    "url": "",
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+  }
+]
