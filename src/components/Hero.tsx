@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      const client = createClient(process.env.REACT_APP_PXL_KEY!);
+      const client = createClient(process.env.NEXT_PUBLIC_PXL_KEY!);
       client.photos.random().then((res) => {
         setImg((res as Photo).src.landscape);
       });
