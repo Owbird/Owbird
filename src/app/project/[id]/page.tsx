@@ -103,7 +103,7 @@ const ProjectDetails = async ({ params }: PageProps) => {
                     <ul className="list-sidebar">
                       {releases.length === 0 && proj?.url && (
                         <li>
-                          <a href={proj.url} target="_blank">
+                          <a href={proj.url} target="_blank ">
                             {proj.url}
                           </a>
                         </li>
