@@ -118,9 +118,9 @@ const ProjectDetails = async ({ params }: PageProps) => {
                               const url = release[key as keyof Tag].toString();
 
                               return (
-                                <Fragment>
+                                <Fragment key={key}>
                                   <br />
-                                  <a href={url} key={key}>
+                                  <a href={url}>
                                     {key.toUpperCase()}:&nbsp;&nbsp;{url}
                                   </a>
                                   <br />
