@@ -2,10 +2,9 @@
 
 import { Photo, createClient } from "pexels";
 import { useEffect, useState } from "react";
-import Typed from "react-typed";
+import TextLoop from "react-text-loop";
 
 const Hero = () => {
-  const isBrowser = typeof window !== "undefined";
   const [img, setImg] = useState("");
 
   useEffect(() => {
@@ -32,18 +31,19 @@ const Hero = () => {
         <div className="table-cell">
           <div className="container">
             <h1 className="hero-title mb-4">I am Obed.</h1>
+
             <p className="hero-subtitle">
-              <Typed
-                strings={[
+              I am a{" "}
+              <TextLoop interval={500}>
+                {[
                   "Backend Developer",
                   "Frontend Developer",
                   "Mobile App Developer",
                   "Desktop App Developer",
-                ]}
-                typeSpeed={100}
-                backSpeed={50}
-                backDelay={2000}
-              />
+                ].map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </TextLoop>
             </p>
           </div>
         </div>
