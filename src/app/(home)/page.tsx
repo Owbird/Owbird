@@ -117,10 +117,7 @@ function App() {
                         <div className="title-box-2">
                           <h5 className="title-left">About me</h5>
                         </div>
-                        <p className="lead">
-                          I speak the languages of devices that understand 0s
-                          and 1s only.
-                        </p>
+                        <p className="lead">I speak to computers.</p>
                         <p className="lead">Sometimes they listen.</p>
                         <p className="lead">Sometimes.</p>
                       </div>
