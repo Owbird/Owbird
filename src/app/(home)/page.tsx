@@ -385,35 +385,21 @@ const ProjectCard = ({ proj }: { proj: Project }) => {
         <div className="card-img">
           <a href={`/project/${proj.id}`}>
             <img
-              height={500}
-              width={500}
               src={proj.image}
               alt={proj.name}
-              className="img-fluid"
+              className="img-fluid card-img-top"
             />
           </a>
         </div>
-        <div className="card-body">
+        <div
+          className="card-body"
+          style={{ height: "200px", overflow: "hidden" }}
+        >
           <h3 className="card-title">
             <a href={`/project/${proj.id}`}>{proj.name}</a>
           </h3>
           <p className="card-description">{proj.short_description}</p>
         </div>
-        {/* <div className="card-footer">
-          <div className="post-author">
-            <a href="#">
-              <img
-                src="assets/img/testimonial-2.jpg"
-                alt=""
-                className="avatar rounded-circle"
-              />
-              <span className="author">Morgan Freeman</span>
-            </a>
-          </div>
-          <div className="post-date">
-            <span className="bi bi-clock" /> 10 min
-          </div>
-        </div> */}
       </div>
     </div>
   );
