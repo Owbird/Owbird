@@ -1,26 +1,24 @@
 import Head from "next/head";
-import Script from "next/script";
 import { Fragment } from "react";
 
 const NavBar = () => {
   return (
     <Fragment>
       <Head>
-        <Script
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-JDTB1BEE2V"
+        ></script>
+        <script
           dangerouslySetInnerHTML={{
-            __html: `
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JDTB1BEE2V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+            __html: `window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-JDTB1BEE2V');
-</script>
-        `,
+  gtag('config', 'G-JDTB1BEE2V');`,
           }}
-        ></Script>
+        ></script>
       </Head>
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center justify-content-between">
