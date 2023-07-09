@@ -10,7 +10,7 @@
   },
   {
     "name": "SVault",
-    "image": "https://ui-avatars.com/api/?name=SVault&size=512",
+    "image": "https://ui-avatars.com/api/?name=SVault&size=512&format=png",
     "id": "SVault",
     "github": "https://github.com/owbird/SVault",
     "isPersonal": true,
@@ -28,7 +28,7 @@
   },
   {
     "name": "Smart Bible",
-    "image": "https://ui-avatars.com/api/?name=Smart-Bible&size=512",
+    "image": "https://ui-avatars.com/api/?name=Smart-Bible&size=512&format=png",
     "id": "Smart-Bible",
     "github": "https://github.com/owbird/Smart-Bible",
     "isPersonal": true,
@@ -46,7 +46,7 @@
   },
   {
     "name": "Github Portfolio Generator",
-    "image": "https://ui-avatars.com/api/?name=GH&size=512",
+    "image": "https://ui-avatars.com/api/?name=GH&size=512&format=png",
     "id": "Github-Portfolio-Generator",
     "github": "https://github.com/owbird/Github-Portfolio-Generator",
     "isPersonal": true,
@@ -55,7 +55,7 @@
   },
   {
     "name": "WhatsApp || Telegram Chat Analysis",
-    "image": "https://ui-avatars.com/api/?name=WA/TA&size=512",
+    "image": "https://ui-avatars.com/api/?name=WA/TA&size=512&format=png",
     "id": "WhatsApp-Telegram-Chat-Analysis",
     "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
     "isPersonal": true,

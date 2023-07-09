@@ -23,13 +23,6 @@ export default function RootLayout({
           href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
           rel="stylesheet"
         />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css"
-          integrity="sha512-T+KoG3fbDoSnlgEXFQqwcTC9AdkFIxhBlmoaFqYaIjq2ShhNwNao9AKaLUPMfwiBPL0ScxAtc+UYbHAgvd+sjQ=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
         <link href="/assets/css/style.css" rel="stylesheet" />
       </head>
       <body>
@@ -38,20 +31,6 @@ export default function RootLayout({
         <script
           async
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        ></script>
-        <script
-          async
-          src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"
-          integrity="sha512-S/H9RQ6govCzeA7F9D0m8NGfsGf0/HjJEiLEfWGaMCjFzavo+DkRbYtZLSO+X6cZsIKQ6JvV/7Y9YMaYnSGnAA=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        ></script>
-        <script
-          async
-          src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"
-          integrity="sha512-hIlMpy2enepx9maXZF1gn0hsvPLerXoLHdb095CmRY5HG3bZfN7XPBZ14g+TUDH1aGgfLyPHmY9/zuU53smuMw=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
         ></script>
 
         <script async src="/assets/js/main.js"></script>

@@ -92,11 +92,9 @@ const ProjectDetails = async ({ params }: PageProps) => {
                   <br />
 
                   <div className="articlpe-content">
-                    <ReactMarkdown
-                      children={readMe}
-                      remarkPlugins={[remarkGfm]}
-                      skipHtml={false}
-                    />
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} skipHtml={false}>
+                      {readMe}
+                    </ReactMarkdown>
                   </div>
                 </div>
               </div>

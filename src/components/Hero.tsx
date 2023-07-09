@@ -2,7 +2,29 @@
 
 import { Photo, createClient } from "pexels";
 import { useEffect, useState } from "react";
-import TextLoop from "react-text-loop";
+// import { TextLoop } from "react-text-loop-next";
+import dynamic from "next/dynamic";
+
+type TextLoopProps = {
+  children?: (string | JSX.Element)[] | undefined;
+  interval: number | number[];
+  delay: number;
+  adjustingSpeed: number;
+  springConfig: {
+    stiffness: number;
+    damping: number;
+  };
+  fade: boolean;
+  mask: boolean;
+  noWrap: boolean;
+  className?: string;
+  onChange?: Function;
+};
+
+const TextLoop = dynamic<TextLoopProps>(
+  () => import("react-text-loop-next").then((data) => data.TextLoop),
+  { ssr: false }
+);
 
 const Hero = () => {
   const [img, setImg] = useState("");
@@ -34,7 +56,15 @@ const Hero = () => {
 
             <p className="hero-subtitle">
               I am a{" "}
-              <TextLoop interval={500}>
+              <TextLoop
+                interval={500}
+                delay={1000}
+                adjustingSpeed={200}
+                springConfig={{ stiffness: 100, damping: 10 }}
+                fade={true}
+                mask={false}
+                noWrap={true}
+              >
                 {[
                   "Backend Developer",
                   "Frontend Developer",

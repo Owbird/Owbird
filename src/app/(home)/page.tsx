@@ -1,10 +1,10 @@
+import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import { Project } from "@/data/models/Proj";
 import projects from "@/data/projects.json";
-
-import Hero from "@/components/Hero";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = generate_metadata({
   title: "OWBIRD | Dev",
@@ -48,7 +48,9 @@ function App() {
                       <div className="row">
                         <div className="col-sm-6 col-md-5">
                           <div className="about-img">
-                            <img
+                            <Image
+                              height={500}
+                              width={500}
                               src="/assets/img/prof.png"
                               className="img-fluid rounded b-shadow-a"
                               alt=""
@@ -381,7 +383,9 @@ const ProjectCard = ({ proj }: { proj: Project }) => {
       <div className="card card-blog">
         <div className="card-img">
           <a href={`/project/${proj.id}`}>
-            <img
+            <Image
+              width={200}
+              height={100}
               src={proj.image}
               alt={proj.name}
               className="img-fluid card-img-top"
