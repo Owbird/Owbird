@@ -69,11 +69,13 @@ function App() {
                             </p>
                             <p>
                               <span className="title-s">Email: </span>
-                              <span>owbirdphorccuo@gmail.com</span>
+                              <a href="mailto://owbirdphorccuo@gmail.com">
+                                owbirdphorccuo@gmail.com
+                              </a>
                             </p>
                             <p>
                               <span className="title-s">Phone: </span>
-                              <span>233 26 554 2141</span>
+                              <a href="tel://+233265542141">+233 26 554 2141</a>
                             </p>
                           </div>
                         </div>
