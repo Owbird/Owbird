@@ -20,8 +20,10 @@
     "pexels": "^1.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-markdown": "^8.0.7",
     "react-text-loop": "^2.3.0",
     "react-typed": "^1.2.0",
+    "remark-gfm": "^3.0.1",
     "typescript": "5.1.3"
   }
 }

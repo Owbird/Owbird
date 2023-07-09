@@ -1,9 +1,10 @@
 import NavBar from "@/components/NavBar";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
-import Markdown from "marked-react";
 import { Metadata } from "next";
 import { Fragment } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export interface Tag {
   name: string;
@@ -91,7 +92,11 @@ const ProjectDetails = async ({ params }: PageProps) => {
                   <br />
 
                   <div className="articlpe-content">
-                    <Markdown>{readMe}</Markdown>
+                    <ReactMarkdown
+                      children={readMe}
+                      remarkPlugins={[remarkGfm]}
+                      skipHtml={false}
+                    />
                   </div>
                 </div>
               </div>
