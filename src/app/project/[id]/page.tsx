@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
+import Image from "next/image";
 import { Fragment } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -28,6 +29,12 @@ interface PageProps {
 type Props = {
   params: { id: string };
 };
+
+export async function generateStaticParams() {
+  return projects.map((proj) => {
+    return { id: proj.id };
+  });
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.id;
@@ -87,7 +94,13 @@ const ProjectDetails = async ({ params }: PageProps) => {
               <div className="col-md-8">
                 <div className="post-box">
                   <div className="post-thumb">
-                    <img src={proj?.image} className="img-fluid" alt="" />
+                    <Image
+                      width={800}
+                      height={400}
+                      src={proj?.image!}
+                      className="img-fluid"
+                      alt=""
+                    />
                   </div>
                   <br />
 
@@ -112,28 +125,30 @@ const ProjectDetails = async ({ params }: PageProps) => {
                         </li>
                       )}
 
-                      {releases.map((release) => (
-                        <li key={release.node_id}>
-                          <a>{release.name}</a>
-                          {Object.keys(release)
-                            .filter((key) => key.includes("url"))
-                            .map((key) => {
-                              const url = release[key as keyof Tag].toString();
+                      {releases.length > 0 &&
+                        releases.map((release) => (
+                          <li key={release.node_id}>
+                            <a>{release.name}</a>
+                            {Object.keys(release)
+                              .filter((key) => key.includes("url"))
+                              .map((key) => {
+                                const url =
+                                  release[key as keyof Tag].toString();
 
-                              return (
-                                <Fragment key={key}>
-                                  <br />
-                                  <a href={url}>
-                                    {key.toUpperCase()}:&nbsp;&nbsp;{url}
-                                  </a>
-                                  <br />
-                                </Fragment>
-                              );
-                            })}
+                                return (
+                                  <Fragment key={key}>
+                                    <br />
+                                    <a href={url}>
+                                      {key.toUpperCase()}:&nbsp;&nbsp;{url}
+                                    </a>
+                                    <br />
+                                  </Fragment>
+                                );
+                              })}
 
-                          <hr />
-                        </li>
-                      ))}
+                            <hr />
+                          </li>
+                        ))}
                     </ul>
                   </div>
                 </div>

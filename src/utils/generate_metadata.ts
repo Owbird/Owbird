@@ -8,6 +8,7 @@ interface MetaProps {
 
 export const generate_metadata = (props: MetaProps): Metadata => {
   return {
+    metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
     title: props.title,
     description: props.desc,
 
