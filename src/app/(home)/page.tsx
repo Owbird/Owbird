@@ -86,32 +86,45 @@ function App() {
                             img={
                               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                             }
+                            title="Python"
                           />
                           <SkillImage
                             img={
                               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
                             }
+                            title="Linux"
                           />
                           <SkillImage
                             img={
                               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg"
                             }
+                            title="GO"
                           />
                           <SkillImage
                             img={
                               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                             }
+                            title="TypeScript"
                           />
                           <SkillImage
                             img={
                               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"
                             }
+                            title="Bash"
                           />
 
                           <SkillImage
                             img={
                               "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                             }
+                            title="JavaScript"
+                          />
+
+                          <SkillImage
+                            img={
+                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+                            }
+                            title="Dart"
                           />
                         </div>
                       </div>
@@ -371,10 +384,10 @@ function App() {
 
 export default App;
 
-const SkillImage = ({ img }: { img: string }) => {
+const SkillImage = ({ img, title }: { img: string; title: string }) => {
   return (
     <div className="grid-item">
-      <img width={50} height={50} src={img} />
+      <img title={title} width={50} height={50} src={img} />
     </div>
   );
 };
