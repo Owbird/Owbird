@@ -9,7 +9,7 @@ import Image from "next/image";
 export const metadata: Metadata = generate_metadata({
   title: "OWBIRD | Dev",
   desc: `
-  I speak the languages of devices that understand 0s and 1s only.
+  I speak to computers.
   Sometimes they listen.
   Sometimes.
   `,
