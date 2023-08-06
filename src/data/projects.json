@@ -1,5 +1,23 @@
 [
   {
+    "name": "One Dev",
+    "image": "https://github.com/Owbird/One-Dev/raw/main/assets/ss.png",
+    "id": "One-Dev",
+    "github": "https://github.com/owbird/One-Dev",
+    "isPersonal": true,
+    "url": "https://github.com/owbird/One-Dev",
+    "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs."
+  },
+  {
+    "name": "Youtube Manager",
+    "image": "https://github.com/Owbird/Yt-Mgr/raw/main/assets/ss.png",
+    "id": "Yt-Mgr",
+    "github": "https://github.com/owbird/yt-mgr",
+    "isPersonal": true,
+    "url": "https://yt-mgr.vercel.app/",
+    "short_description": "A Website to download YouTube videos in different formats with playlist and captions support."
+  },
+  {
     "name": "X-GPT",
     "image": "https://github.com/Owbird/X-GPT/raw/main/public/logo.png",
     "id": "X-GPT",
@@ -16,15 +34,6 @@
     "isPersonal": true,
     "url": "",
     "short_description": "A desktop application that enables users to encrypt their files locally or securely share."
-  },
-  {
-    "name": "Youtube Manager",
-    "image": "https://github.com/Owbird/Yt-Mgr/raw/main/assets/ss.png",
-    "id": "Yt-Mgr",
-    "github": "https://github.com/owbird/yt-mgr",
-    "isPersonal": true,
-    "url": "https://yt-mgr.vercel.app/",
-    "short_description": "A Simple Website to download YouTube videos in different formats with playlist support "
   },
   {
     "name": "Smart Bible",
