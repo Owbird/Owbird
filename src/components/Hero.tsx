@@ -75,6 +75,12 @@ const Hero = () => {
                 ))}
               </TextLoop>
             </p>
+            <small>
+              Random image from{" "}
+              <a style={{ color: "white" }} href="https://www.pexels.com/">
+                pexels.com
+              </a>
+            </small>
           </div>
         </div>
       </div>
