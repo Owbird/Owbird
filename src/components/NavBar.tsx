@@ -37,8 +37,8 @@ const NavBar = () => {
               </li>
 
               <li>
-                <a className="nav-link scrollto" href="/#contact">
-                  Contact
+                <a className="nav-link scrollto" href="https://github.com/owbird">
+                  Github
                 </a>
               </li>
             </ul>
