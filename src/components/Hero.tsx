@@ -30,16 +30,10 @@ const Hero = () => {
   const [img, setImg] = useState("");
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
       const client = createClient(process.env.NEXT_PUBLIC_PXL_KEY!);
       client.photos.random().then((res) => {
         setImg((res as Photo).src.landscape);
       });
-    } else {
-      setImg(
-        "https://images.unsplash.com/photo-1584645511189-2a471d586ac2?ixid=M3wxMTI1OHwwfDF8cmFuZG9tfHx8fHx8fHx8MTY4NzU2NTIyMHw&ixlib=rb-4.0.3&q=85&w=1920"
-      );
-    }
   }, []);
 
   return (
