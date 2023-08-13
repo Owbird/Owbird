@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import { Project } from "@/data/models/Proj";
 import projects from "@/data/projects.json";
+import skills from "@/data/skills.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -82,50 +83,13 @@ function App() {
                       </div>
                       <div className="skill-mf">
                         <div className="grid-container">
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            }
-                            title="Python"
-                          />
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                            }
-                            title="Linux"
-                          />
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg"
-                            }
-                            title="GO"
-                          />
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                            }
-                            title="TypeScript"
-                          />
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"
-                            }
-                            title="Bash"
-                          />
-
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                            }
-                            title="JavaScript"
-                          />
-
-                          <SkillImage
-                            img={
-                              "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
-                            }
-                            title="Dart"
-                          />
+                          {skills.map((skill) => (
+                            <SkillImage
+                              key={skill.title}
+                              img={skill.image}
+                              title={skill.title}
+                            />
+                          ))}
                         </div>
                       </div>
                     </div>
