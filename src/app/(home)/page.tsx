@@ -51,7 +51,7 @@ function App() {
                             <Image
                               height={500}
                               width={500}
-                              src="/assets/img/prof.png"
+                              src="https://avatars.githubusercontent.com/u/40531477?v=4"
                               className="img-fluid rounded b-shadow-a"
                               alt=""
                             />
