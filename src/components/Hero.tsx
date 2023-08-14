@@ -1,8 +1,5 @@
 "use client";
 
-import { Photo, createClient } from "pexels";
-import { useEffect, useState } from "react";
-// import { TextLoop } from "react-text-loop-next";
 import dynamic from "next/dynamic";
 
 type TextLoopProps = {
@@ -23,24 +20,17 @@ type TextLoopProps = {
 
 const TextLoop = dynamic<TextLoopProps>(
   () => import("react-text-loop-next").then((data) => data.TextLoop),
-  { ssr: false }
+  { ssr: false },
 );
 
 const Hero = () => {
-  const [img, setImg] = useState("");
-
-  useEffect(() => {
-      const client = createClient(process.env.NEXT_PUBLIC_PXL_KEY!);
-      client.photos.random().then((res) => {
-        setImg((res as Photo).src.landscape);
-      });
-  }, []);
-
   return (
     <div
       id="hero"
       className="hero route bg-image"
-      style={{ backgroundImage: `url(${img})` }}
+      style={{
+        backgroundImage: `url(https://images.pexels.com/photos/2653362/pexels-photo-2653362.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`,
+      }}
     >
       <div className="overlay-itro" />
       <div className="hero-content display-table">
@@ -69,12 +59,6 @@ const Hero = () => {
                 ))}
               </TextLoop>
             </p>
-            <small>
-              Random image from{" "}
-              <a style={{ color: "white" }} href="https://www.pexels.com/">
-                pexels.com
-              </a>
-            </small>
           </div>
         </div>
       </div>
