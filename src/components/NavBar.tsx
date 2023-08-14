@@ -5,13 +5,14 @@ const NavBar = () => {
   return (
     <Fragment>
       {/* <!-- Google tag (gtag.js) --> */}
-      <Script src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-JDTB1BEE2V" />
       <Script id="google-analytics">
         {`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-  gtag('config', 'G-JDTB1BEE2V');`}
+          gtag('config', 'G-JDTB1BEE2V');
+        `}
       </Script>
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center justify-content-between">
@@ -37,7 +38,10 @@ const NavBar = () => {
               </li>
 
               <li>
-                <a className="nav-link scrollto" href="https://github.com/owbird">
+                <a
+                  className="nav-link scrollto"
+                  href="https://github.com/owbird"
+                >
                   Github
                 </a>
               </li>
