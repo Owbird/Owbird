@@ -66,7 +66,7 @@ function App() {
                             </p>
                             <p>
                               <span className="title-s">Profile: </span>
-                              <span>Full Stack Engineer</span>
+                              <span>An Engineer</span>
                             </p>
                             <p>
                               <span className="title-s">Email: </span>

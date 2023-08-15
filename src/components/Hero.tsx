@@ -51,7 +51,6 @@ const Hero = () => {
               >
                 {[
                   "Backend Developer",
-                  "Frontend Developer",
                   "Mobile App Developer",
                   "Desktop App Developer",
                 ].map((item) => (
