@@ -1,34 +1,36 @@
+import BackToTop from "@/components/BackToTop";
+import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
 import Image from "next/image";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export interface Tag {
+export interface ITag {
   name: string;
   zipball_url: string;
   tarball_url: string;
-  commit: Commit;
+  commit: ICommit;
   node_id: string;
 }
 
-export interface Commit {
+export interface ICommit {
   sha: string;
   url: string;
 }
 
-interface PageProps {
+interface IPageProps {
   params: {
     id: string;
   };
 }
 
-type Props = {
+interface IMetaProps {
   params: { id: string };
-};
+}
 
 export async function generateStaticParams() {
   return projects.map((proj) => {
@@ -36,7 +38,9 @@ export async function generateStaticParams() {
   });
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: IMetaProps): Promise<Metadata> {
   const id = params.id;
   const proj = projects.find((p) => p.id === id);
 
@@ -47,32 +51,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-const ProjectDetails = async ({ params }: PageProps) => {
+const ProjectDetails: FC<IPageProps> = async ({ params }) => {
   const id = params.id;
 
-  const readme_res = await fetch(
-    `https://raw.githubusercontent.com/Owbird/${id}/main/README.md`
+  const readmeRes = await fetch(
+    `https://raw.githubusercontent.com/Owbird/${id}/main/README.md`,
+    {
+      cache: "no-cache",
+    },
   );
 
-  const readMe = await readme_res.text();
+  const readMe = await readmeRes.text();
 
-  const releases_res = await fetch(
+  const releasesRes = await fetch(
     `https://api.github.com/repos/Owbird/${id}/tags`,
     {
       cache: "no-cache",
-    }
+    },
   );
 
-  const releases = (await releases_res.json()) as Tag[];
+  const releases = (await releasesRes.json()) as ITag[];
 
   const proj = projects.find((p) => p.id === id);
 
   return (
-    <>
-      {/* ======= Header ======= */}
+    <Fragment>
       <NavBar />
 
-      {/* End Header */}
       <div
         className="hero hero-single route bg-image"
         style={{ backgroundImage: `url(${proj?.image})` }}
@@ -87,7 +92,6 @@ const ProjectDetails = async ({ params }: PageProps) => {
         </div>
       </div>
       <main id="main">
-        {/* ======= Blog Single Section ======= */}
         <section className="blog-wrapper sect-pt4" id="blog">
           <div className="container">
             <div className="row">
@@ -133,7 +137,7 @@ const ProjectDetails = async ({ params }: PageProps) => {
                               .filter((key) => key.includes("url"))
                               .map((key) => {
                                 const url =
-                                  release[key as keyof Tag].toString();
+                                  release[key as keyof ITag].toString();
 
                                 return (
                                   <Fragment key={key}>
@@ -168,37 +172,10 @@ const ProjectDetails = async ({ params }: PageProps) => {
             </div>
           </div>
         </section>
-        {/* End Blog Single Section */}
       </main>
-      {/* End #main */}
-      {/* ======= Footer ======= */}
-      <footer>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-12">
-              <div className="copyright-box">
-                <p className="copyright">
-                  © Copyright <strong>Owbird</strong>. All Rights Reserved
-                </p>
-                <div className="credits">
-                  Designed by{" "}
-                  <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-      {/* End  Footer */}
-      <a
-        href="#"
-        className="back-to-top d-flex align-items-center justify-content-center"
-      >
-        <i className="bi bi-arrow-up-short" />
-      </a>
-      {/* Vendor JS Files */}
-      {/* Template Main JS File */}
-    </>
+      <Footer />
+      <BackToTop />
+    </Fragment>
   );
 };
 

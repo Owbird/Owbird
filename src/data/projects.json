@@ -4,7 +4,6 @@
     "image": "https://github.com/Owbird/One-Dev/raw/main/assets/ss.png",
     "id": "One-Dev",
     "github": "https://github.com/owbird/One-Dev",
-    "isPersonal": true,
     "url": "https://github.com/owbird/One-Dev",
     "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs."
   },
@@ -13,7 +12,6 @@
     "image": "https://github.com/Owbird/Yt-Mgr/raw/main/assets/ss.png",
     "id": "Yt-Mgr",
     "github": "https://github.com/owbird/yt-mgr",
-    "isPersonal": true,
     "url": "https://yt-mgr.vercel.app/",
     "short_description": "A Website to download YouTube videos in different formats with playlist and captions support."
   },
@@ -22,7 +20,6 @@
     "image": "https://github.com/Owbird/X-GPT/raw/main/public/logo.png",
     "id": "X-GPT",
     "github": "https://github.com/owbird/X-GPT",
-    "isPersonal": true,
     "url": "",
     "short_description": "A chrome extension to import website data and text files into ChatGPT and also pretty print GPT's responses"
   },
@@ -31,7 +28,6 @@
     "image": "https://ui-avatars.com/api/?name=SVault&size=512&format=png",
     "id": "SVault",
     "github": "https://github.com/owbird/SVault",
-    "isPersonal": true,
     "url": "",
     "short_description": "A desktop application that enables users to encrypt their files locally or securely share."
   },
@@ -40,7 +36,6 @@
     "image": "https://ui-avatars.com/api/?name=Smart-Bible&size=512&format=png",
     "id": "Smart-Bible",
     "github": "https://github.com/owbird/Smart-Bible",
-    "isPersonal": true,
     "url": "",
     "short_description": "A Search Engine for the Bible using open source Machine Learning models "
   },
@@ -49,7 +44,6 @@
     "image": "/assets/img/ss/gh-friends.png",
     "id": "Gh-Friends",
     "github": "https://github.com/owbird/gh-friends",
-    "isPersonal": true,
     "url": "",
     "short_description": "A Graph network visualization of a Github user's network. "
   },
@@ -58,7 +52,6 @@
     "image": "https://ui-avatars.com/api/?name=GH&size=512&format=png",
     "id": "Github-Portfolio-Generator",
     "github": "https://github.com/owbird/Github-Portfolio-Generator",
-    "isPersonal": true,
     "url": "",
     "short_description": "A personal resume website template built with React.js, Typescript, Next.js, and styled with Tailwind css with data populated from Github automagically. "
   },
@@ -67,7 +60,6 @@
     "image": "https://ui-avatars.com/api/?name=WA/TA&size=512&format=png",
     "id": "WhatsApp-Telegram-Chat-Analysis",
     "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
-    "isPersonal": true,
     "url": "",
     "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
   }
