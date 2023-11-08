@@ -162,6 +162,18 @@ const ProjectDetails: FC<IPageProps> = async ({ params }) => {
                     </a>
                   </div>
                 </div>
+                <div className="widget-sidebar widget-tags">
+                  <h5 className="sidebar-title">Project Website</h5>
+                  <div className="sidebar-content">
+                    <a
+                      href={proj?.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {proj?.url}
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
