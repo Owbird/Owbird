@@ -1,9 +1,9 @@
-import { Project } from "@/data/models/Proj";
+import { IProject } from "@/data/models/Proj";
 import Image from "next/image";
 import { FC } from "react";
 
 interface IProjectProps {
-  proj: Project;
+  proj: IProject;
 }
 
 const ProjectCard: FC<IProjectProps> = ({ proj }) => {

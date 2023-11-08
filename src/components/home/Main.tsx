@@ -1,8 +1,8 @@
-import ProjectCard from "@/components/ProjectCard";
-import SkillImage from "@/components/SkillImage";
 import projects from "@/data/projects.json";
 import skills from "@/data/skills.json";
 import Image from "next/image";
+import ProjectCard from "./ProjectCard";
+import SkillImage from "./SkillImage";
 
 const Main = () => {
   return (

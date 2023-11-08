@@ -8,11 +8,11 @@
   ======================================================== */
 }
 
-import BackToTop from "@/components/BackToTop";
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import NavBar from "@/components/NavBar";
-import Main from "@/components/main/Main";
+import BackToTop from "@/components/home/BackToTop";
+import Footer from "@/components/home/Footer";
+import Hero from "@/components/home/Hero";
+import Main from "@/components/home/Main";
+import NavBar from "@/components/home/NavBar";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
 import { Fragment } from "react";
