@@ -121,13 +121,7 @@ const ProjectDetails: FC<IPageProps> = async ({ params }) => {
                   <h5 className="sidebar-title">Releases</h5>
                   <div className="sidebar-content">
                     <ul className="list-sidebar">
-                      {releases.length === 0 && proj?.url && (
-                        <li>
-                          <a href={proj.url} target="_blank ">
-                            {proj.url}
-                          </a>
-                        </li>
-                      )}
+                      {releases.length === 0 && <li>No releases yet</li>}
 
                       {releases.length > 0 &&
                         releases.map((release) => (
