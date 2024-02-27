@@ -31,10 +31,6 @@ const Main = () => {
                             <span>Obed Forkuo</span>
                           </p>
                           <p>
-                            <span className="title-s">Profile: </span>
-                            <span>An Engineer</span>
-                          </p>
-                          <p>
                             <span className="title-s">Email: </span>
                             <a href="mailto://owbirdphorccuo@gmail.com">
                               owbirdphorccuo@gmail.com
