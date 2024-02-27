@@ -18,7 +18,7 @@ import { Metadata } from "next";
 import { Fragment } from "react";
 
 export const metadata: Metadata = generate_metadata({
-  title: "OWBIRD | Dev",
+  title: "Owbird",
   desc: `
   I speak to computers.
   Sometimes they listen.
