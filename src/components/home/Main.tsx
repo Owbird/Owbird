@@ -1,8 +1,6 @@
 import projects from "@/data/projects.json";
-import skills from "@/data/skills.json";
 import Image from "next/image";
 import ProjectCard from "./ProjectCard";
-import SkillImage from "./SkillImage";
 
 const Main = () => {
   return (
@@ -51,13 +49,6 @@ const Main = () => {
                     </div>
                     <div className="skill-mf">
                       <div className="grid-container">
-                        {skills.map((skill) => (
-                          <SkillImage
-                            key={skill.title}
-                            img={skill.image}
-                            title={skill.title}
-                          />
-                        ))}
                       </div>
                     </div>
                   </div>
