@@ -32,7 +32,7 @@ export async function generateMetadata({
   const proj = projects.find((p) => p.id === id);
 
   return generate_metadata({
-    title: `OWBIRD | ${id}`,
+    title: `Owbird | ${id}`,
     desc: proj?.short_description!,
     image: proj?.image!,
   });
