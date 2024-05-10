@@ -1,9 +1,3 @@
-import BackToTop from "@/components/home/BackToTop";
-import Footer from "@/components/home/Footer";
-import NavBar from "@/components/home/NavBar";
-import Hero from "@/components/project/Hero";
-import Main from "@/components/project/Main";
-import { ITag } from "@/data/models/Proj";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
@@ -61,18 +55,7 @@ const ProjectDetails: FC<IPageProps> = async ({ params }) => {
 
   const proj = projects.find((p) => p.id === id);
 
-  return (
-    <Fragment>
-      <NavBar />
-
-      <Hero id={proj?.id!} image={proj?.image!} />
-
-      <Main proj={proj!} readMe={readMe} releases={releases} />
-
-      <Footer />
-      <BackToTop />
-    </Fragment>
-  );
+  return <Fragment></Fragment>;
 };
 
 export default ProjectDetails;

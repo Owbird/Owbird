@@ -1,4 +1,4 @@
-export interface IProject {
+interface IProject {
   name: string;
   github: string;
   url: string;
@@ -7,7 +7,7 @@ export interface IProject {
   short_description: string;
 }
 
-export interface ITag {
+interface ITag {
   name: string;
   zipball_url: string;
   tarball_url: string;
@@ -15,7 +15,7 @@ export interface ITag {
   node_id: string;
 }
 
-export interface ICommit {
+interface ICommit {
   sha: string;
   url: string;
 }
