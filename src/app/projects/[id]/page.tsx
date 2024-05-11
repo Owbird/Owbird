@@ -3,8 +3,6 @@ import WhiteButton from "@/components/WhiteButton";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
-import { remark } from "remark";
-import html from "remark-html";
 
 interface IPageProps {
   params: {
@@ -50,7 +48,7 @@ const ProjectDetails = async ({ params }: IPageProps) => {
   ];
 
   const contentRes = await fetch(
-    `http://localhost:3000/assets/project-contents/${id}.html`,
+    `https://${process.env.VERCEL_URL}/assets/project-contents/${id}.html`,
     {
       cache: "no-cache",
     },

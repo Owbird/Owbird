@@ -17,9 +17,9 @@ export default function About() {
           alt="Profile"
           src="https://avatars.githubusercontent.com/u/40531477?v=4"
         />
-        <h1 className="font-bold text-xl mt-4 mb-4">I'm Obed.</h1>
+        <h1 className="font-bold text-xl mt-4 mb-4">I&apos;m Obed.</h1>
         <p>Just a guy trying to speak to computers.</p>
-        <p>Seriously...that's it.</p>
+        <p>Seriously...that&apos;s it.</p>
         <br />
         <p>👇 You can also find me here 👇</p>
 
