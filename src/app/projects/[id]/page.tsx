@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import WhiteButton from "@/components/WhiteButton";
+import ProjectPlatformsBadge from "@/components/project/ProjectPlatformsBadge";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
@@ -64,14 +65,7 @@ const ProjectDetails = async ({ params }: IPageProps) => {
 
       <div>
         <div className="flex flex-col">
-          {platforms.map((platform) => (
-            <span
-              key={platform}
-              className="mr-2 capitalize bg-green-500 p-1 rounded-md text-center w-20"
-            >
-              {platform}
-            </span>
-          ))}
+          <ProjectPlatformsBadge platforms={platforms} />
           <h1 className="font-bold text-4xl mr-2">{name}</h1>
         </div>
         <div className="flex mt-4 mb-4">
