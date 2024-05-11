@@ -1,4 +1,7 @@
-export const navLinks = [{ label: "About me", href: "/about" }];
+export const navLinks = [
+  { label: "About me", href: "/about" },
+  { label: "Projects", href: "/projects" },
+];
 
 export const socialLinks = [
   { label: "Email", href: "mailto:owbirdphorccuo@gmail.com" },
