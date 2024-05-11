@@ -1,3 +1,4 @@
+import Menu from "@/components/Menu";
 import Hero from "@/components/home/Hero";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
@@ -16,6 +17,8 @@ function App() {
   return (
     <main>
       <Hero />
+
+      <Menu />
     </main>
   );
 }
