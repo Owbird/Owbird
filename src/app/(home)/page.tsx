@@ -1,6 +1,6 @@
+import Hero from "@/components/home/Hero";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
-import { Fragment } from "react";
 
 export const metadata: Metadata = generate_metadata({
   title: "Owbird",
@@ -13,7 +13,11 @@ export const metadata: Metadata = generate_metadata({
 });
 
 function App() {
-  return <Fragment></Fragment>;
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
 }
 
 export default App;
