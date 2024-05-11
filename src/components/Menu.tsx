@@ -1,8 +1,6 @@
-import Link from "next/link";
+import NavBar from "./NavBar";
 
 const Menu = () => {
-  const menus = [{ label: "About me", href: "/about" }];
-
   return (
     <div
       id="menu"
@@ -13,17 +11,7 @@ const Menu = () => {
         <p>🫣</p>
       </div>
 
-      <div className="flex">
-        {menus.map(({ label, href }) => (
-          <Link
-            key={href}
-            href={href}
-            className="hover:bg-white hover:text-black border border-white p-4 rounded-md"
-          >
-            {label}
-          </Link>
-        ))}
-      </div>
+      <NavBar />
     </div>
   );
 };
