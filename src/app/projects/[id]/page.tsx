@@ -1,7 +1,10 @@
+import NavBar from "@/components/NavBar";
+import WhiteButton from "@/components/WhiteButton";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
 import { Metadata } from "next";
-import { FC, Fragment } from "react";
+import { remark } from "remark";
+import html from "remark-html";
 
 interface IPageProps {
   params: {
@@ -32,30 +35,58 @@ export async function generateMetadata({
   });
 }
 
-const ProjectDetails: FC<IPageProps> = async ({ params }) => {
+const ProjectDetails = async ({ params }: IPageProps) => {
   const id = params.id;
-
-  const readmeRes = await fetch(
-    `https://raw.githubusercontent.com/Owbird/${id}/main/README.md`,
-    {
-      cache: "no-cache",
-    },
-  );
-
-  const readMe = await readmeRes.text();
-
-  const releasesRes = await fetch(
-    `https://api.github.com/repos/Owbird/${id}/tags`,
-    {
-      cache: "no-cache",
-    },
-  );
-
-  const releases = (await releasesRes.json()) as ITag[];
 
   const proj = projects.find((p) => p.id === id);
 
-  return <Fragment></Fragment>;
+  if (!proj) return "Oops!";
+
+  const { name, url, github, platforms } = proj;
+
+  const projectLinks = [
+    { label: "Code", href: github },
+    { label: "Website", href: url },
+  ];
+
+  const contentRes = await fetch(
+    `http://localhost:3000/assets/project-contents/${id}.html`,
+    {
+      cache: "no-cache",
+    },
+  );
+
+  const content = await contentRes.text();
+
+  return (
+    <div className="mt-4 ml-4 mr-4">
+      <div className="flex justify-end mb-8">
+        <NavBar />
+      </div>
+
+      <div>
+        <div className="flex flex-col">
+          {platforms.map((platform) => (
+            <span
+              key={platform}
+              className="mr-2 capitalize bg-green-500 p-1 rounded-md text-center w-20"
+            >
+              {platform}
+            </span>
+          ))}
+          <h1 className="font-bold text-4xl mr-2">{name}</h1>
+        </div>
+        <div className="flex mt-4 mb-4">
+          {projectLinks.map(({ label, href }) => (
+            <div key={href} className="mr-2">
+              <WhiteButton label={label} href={href} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-8" dangerouslySetInnerHTML={{ __html: content }}></div>
+    </div>
+  );
 };
 
 export default ProjectDetails;

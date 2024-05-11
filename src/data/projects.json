@@ -5,7 +5,8 @@
     "id": "One-Dev",
     "github": "https://github.com/owbird/One-Dev",
     "url": "https://one-dev.vercel.app",
-    "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs."
+    "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs.",
+    "platforms": ["Desktop"]
   },
   {
     "name": "Youtube Manager",
@@ -13,7 +14,8 @@
     "id": "Yt-Mgr",
     "github": "https://github.com/owbird/yt-mgr",
     "url": "https://yt-mgr.vercel.app/",
-    "short_description": "A Website to download YouTube videos in different formats with playlist and captions support."
+    "short_description": "A Website to download YouTube videos in different formats with playlist and captions support.",
+    "platforms": ["Website"]
   },
   {
     "name": "SVault",
@@ -21,7 +23,8 @@
     "id": "SVault",
     "github": "https://github.com/owbird/SVault",
     "url": "",
-    "short_description": "A desktop application that enables users to encrypt their files locally or securely share."
+    "short_description": "A desktop application that enables users to encrypt their files locally or securely share.",
+    "platforms": ["Desktop"]
   },
   {
     "name": "Smart Bible",
@@ -29,7 +32,8 @@
     "id": "Smart-Bible",
     "github": "https://github.com/owbird/Smart-Bible",
     "url": "",
-    "short_description": "A Search Engine for the Bible using open source Machine Learning models "
+    "short_description": "A Search Engine for the Bible using open source Machine Learning models ",
+    "platforms": ["Website"]
   },
   {
     "name": "Github Friends",
@@ -37,7 +41,8 @@
     "id": "Gh-Friends",
     "github": "https://github.com/owbird/gh-friends",
     "url": "",
-    "short_description": "A Graph network visualization of a Github user's network. "
+    "short_description": "A Graph network visualization of a Github user's network. ",
+    "platforms": ["Website"]
   },
   {
     "name": "Github Commits Counter",
@@ -45,7 +50,8 @@
     "id": "Github-Commits-Counter",
     "github": "https://github.com/owbird/github-commits-counter",
     "url": "",
-    "short_description": "Get a shields.io badge for the total commits of the month s "
+    "short_description": "Get a shields.io badge for the total commits of the month s ",
+    "platforms": ["API"]
   },
   {
     "name": "WhatsApp || Telegram Chat Analysis",
@@ -53,7 +59,8 @@
     "id": "WhatsApp-Telegram-Chat-Analysis",
     "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
     "url": "",
-    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. "
+    "short_description": "It visualizes the most used words, hours texted, general sentiments by the other party. ",
+    "platforms": ["Website"]
   },
   {
     "name": "X-GPT",
@@ -61,7 +68,8 @@
     "id": "X-GPT",
     "github": "https://github.com/owbird/X-GPT",
     "url": "",
-    "short_description": "A chrome extension to import website data and text files into ChatGPT and also pretty print GPT's responses"
+    "short_description": "A chrome extension to import website data and text files into ChatGPT and also pretty print GPT's responses",
+    "platforms": ["Extension"]
   },
   {
     "name": "Github Portfolio Generator",
@@ -69,6 +77,7 @@
     "id": "Github-Portfolio-Generator",
     "github": "https://github.com/owbird/Github-Portfolio-Generator",
     "url": "",
-    "short_description": "A personal resume website template built with React.js, Typescript, Next.js, and styled with Tailwind css with data populated from Github automagically. "
+    "short_description": "A personal resume website template built with React.js, Typescript, Next.js, and styled with Tailwind css with data populated from Github automagically. ",
+    "platforms": ["Website"]
   }
 ]
