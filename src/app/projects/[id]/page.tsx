@@ -41,21 +41,14 @@ const ProjectDetails = async ({ params }: IPageProps) => {
 
   if (!proj) return "Oops!";
 
-  const { name, url, github, platforms } = proj;
+  const { name, url, github, platforms, content } = proj;
+
+  const { title, body, features } = content;
 
   const projectLinks = [
     { label: "Code", href: github },
     { label: "Website", href: url },
   ];
-
-  const contentRes = await fetch(
-    `https://${process.env.VERCEL_URL}/assets/project-contents/${id}.html`,
-    {
-      cache: "no-cache",
-    },
-  );
-
-  const content = await contentRes.text();
 
   return (
     <div className="mt-4 ml-4 mr-4">
@@ -76,7 +69,31 @@ const ProjectDetails = async ({ params }: IPageProps) => {
           ))}
         </div>
       </div>
-      <div className="mt-8" dangerouslySetInnerHTML={{ __html: content }}></div>
+      <div>
+        <h2 className="mt-8 font-bold text-2xl">{title}</h2>
+
+        <p className="mb-4">{body}</p>
+
+        <h2 className="font-bold text-2xl mb-4">Features</h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+          {features.map(({ title, items }) => (
+            <div key={title}>
+              <p className="font-bold">{title}</p>
+              <ul>
+                {items.map((item) => (
+                  <li
+                    key={item}
+                    className="border border-green-700 rounded-md text-center w-40 mb-4"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
