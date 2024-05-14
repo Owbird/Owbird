@@ -10,10 +10,9 @@ const Hero = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen text-[5rem] text-center">
-      <p>Heyo,</p>
-      <p>You found me </p>
-      <p>🙈</p>
-
+      <p className="animate__animated animate__fadeInDown">Heyo,</p>
+      <p className="animate__animated animate__fadeInLeft">You found me</p>
+      <p className="animate__animated animate__fadeInUp">🙈</p>
       <div className="cursor-pointer" onClick={scrollToView}>
         <FaArrowCircleDown
           size={30}

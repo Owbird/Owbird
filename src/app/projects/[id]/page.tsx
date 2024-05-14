@@ -3,6 +3,7 @@ import WhiteButton from "@/components/WhiteButton";
 import ProjectPlatformsBadge from "@/components/project/ProjectPlatformsBadge";
 import projects from "@/data/projects.json";
 import { generate_metadata } from "@/utils/generate_metadata";
+import clsx from "clsx";
 import { Metadata } from "next";
 
 interface IPageProps {
@@ -70,15 +71,25 @@ const ProjectDetails = async ({ params }: IPageProps) => {
         </div>
       </div>
       <div>
-        <h2 className="mt-8 font-bold text-2xl">{title}</h2>
+        <h2 className="animate__animated animate__flipInX mt-8 font-bold text-2xl">
+          {title}
+        </h2>
 
-        <p className="mb-4">{body}</p>
+        <p className="animate__animated animate__zoomIn mb-4">{body}</p>
 
         <h2 className="font-bold text-2xl mb-4">Features</h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-          {features.map(({ title, items }) => (
-            <div key={title}>
+          {features.map(({ title, items }, index) => (
+            <div
+              key={title}
+              className={clsx(
+                "animate__animated",
+                index % 2 === 0
+                  ? "animate__lightSpeedInRight"
+                  : "animate__lightSpeedInLeft",
+              )}
+            >
               <p className="font-bold">{title}</p>
               <ul>
                 {items.map((item) => (
