@@ -16,11 +16,7 @@ interface IMetaProps {
   params: { id: string };
 }
 
-export async function generateStaticParams() {
-  return projects.map((proj) => {
-    return { id: proj.id };
-  });
-}
+export const dynamic = "force-static"
 
 export async function generateMetadata({
   params,
@@ -29,7 +25,7 @@ export async function generateMetadata({
   const proj = projects.find((p) => p.id === id);
 
   return generate_metadata({
-    title: `Owbird | ${id}`,
+    title: `${id} | Owbird`,
     desc: proj?.short_description!,
     image: proj?.image!,
   });

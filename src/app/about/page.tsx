@@ -2,7 +2,13 @@ import NavBar from "@/components/NavBar";
 import WhiteButton from "@/components/WhiteButton";
 import { socialLinks } from "@/data/constants";
 import clsx from "clsx";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About | Owbird",
+  description: "About Owbird",
+};
 
 export default function About() {
   const randomAnimations = ["animate__animated animate__bounce"];

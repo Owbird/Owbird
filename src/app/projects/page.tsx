@@ -2,8 +2,14 @@ import NavBar from "@/components/NavBar";
 import ProjectPlatformsBadge from "@/components/project/ProjectPlatformsBadge";
 import projects from "@/data/projects.json";
 import clsx from "clsx";
+import { Metadata } from "next";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
+
+export const metadata: Metadata = {
+  title: "Projects | Owbird",
+  description: "My projects",
+};
 
 export default function ProjectsPage() {
   return (
