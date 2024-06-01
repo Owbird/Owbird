@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import "animate.css";
 
@@ -15,6 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white scroll-smooth">{children}</body>
+
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId="G-JDTB1BEE2V" />
+      )}
     </html>
   );
 }
