@@ -60,7 +60,7 @@ const ProjectDetails = async ({ params }: IPageProps) => {
         </div>
         <div className="flex mt-4 mb-4">
           {projectLinks.map(({ label, href }) => (
-            <div key={href} className="mr-2">
+            href && <div key={href} className="mr-2">
               <WhiteButton label={label} href={href} />
             </div>
           ))}
@@ -86,12 +86,12 @@ const ProjectDetails = async ({ params }: IPageProps) => {
                   : "animate__lightSpeedInLeft",
               )}
             >
-              <p className="font-bold">{title}</p>
+              <p className="font-bold text-2xl">{title}</p>
               <ul>
                 {items.map((item) => (
                   <li
                     key={item}
-                    className="border border-green-700 rounded-md text-center w-40 mb-4"
+                    className="mb-4"
                   >
                     {item}
                   </li>
