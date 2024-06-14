@@ -1,223 +1,98 @@
 [
   {
-    "name": "One Dev",
-    "image": "https://camo.githubusercontent.com/81678929118fb8f75dc2ae622704d5eb2003ba357f36ca1fa1f892a900817c78/68747470733a2f2f6f6e652d6465762e76657263656c2e6170702f696d672f686f6d652e706e67",
-    "id": "One-Dev",
-    "github": "https://github.com/owbird/One-Dev",
-    "url": "https://one-dev.vercel.app",
-    "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs.",
-    "platforms": ["Desktop"],
-    "content": {
-      "title": "What is One-Dev?",
-      "body": "One-Dev is a comprehensive desktop application designed to streamline the development experience for software engineers. It provides a suite of essential developer tools conveniently organized into app modules accessible via tabs",
-      "features": [
-        {
-          "title": "System Monitor",
-          "items": ["Resources", "Task Manager", "File Systems"]
-        },
-        {
-          "title": "Git Client",
-          "items": ["Local access", "Remote access"]
-        },
-        {
-          "title": "File manager",
-          "items": ["Browse local directories"]
-        },
-        {
-          "title": "Notifications",
-          "items": ["Power"]
-        }
-      ]
-    }
-  },
-  {
-    "name": "Youtube Manager",
-    "image": "https://github.com/Owbird/Yt-Mgr/raw/main/assets/ss.png",
-    "id": "Yt-Mgr",
-    "github": "https://github.com/owbird/yt-mgr",
-    "url": "https://yt-mgr.vercel.app/",
-    "short_description": "A Website to download YouTube videos in different formats with playlist and captions support.",
-    "platforms": ["Website"],
-    "content": {
-      "title": "Download YouTube Videos Easily",
-      "body": "Youtube Manager is a user-friendly website that allows you to download videos from YouTube in various formats, including MP4, MP3, and WEBM. It also supports downloading entire playlists and captions for your videos. With Youtube Manager, you can save your favorite YouTube content for offline viewing or convert it to a format compatible with your devices.",
-      "features": [
-        {
-          "title": "Multiple Format Downloads",
-          "items": ["Download videos in MP4, MP3, and WEBM formats."]
-        },
-        {
-          "title": "Playlist Support",
-          "items": ["Download entire YouTube playlists with a single click."]
-        },
-        {
-          "title": "Caption Download",
-          "items": [
-            "Save captions in various languages alongside your downloaded videos."
-          ]
-        },
-        {
-          "title": "User-Friendly Interface",
-          "items": [
-            "Youtube Manager's simple and intuitive interface makes downloading videos a breeze."
-          ]
-        }
-      ]
-    }
+    "name": "SVault Engine",
+    "id": "svault-engine",
+    "github": "https://github.com/owbird/svault-engine",
+    "url": "https://github.com/owbird/svault-engine",
+    "short_description": "A vault-based Virtual File System offering secure file encryption, cross-device sharing, and file server hosting.",
+    "platforms": ["PKG", "CLI"]
   },
   {
     "name": "SVault",
-    "image": "https://ui-avatars.com/api/?name=SVault&size=512&format=png",
     "id": "SVault",
     "github": "https://github.com/owbird/SVault",
     "url": "https://github.com/owbird/SVault",
     "short_description": "A desktop application that enables users to encrypt their files locally or securely share them.",
-    "platforms": ["Desktop"],
-    "content": {
-      "title": "Secure Your Files with SVault",
-      "body": "SVault is a desktop application designed to give you complete control over your data security. It allows you to encrypt your files locally, ensuring they remain unreadable to anyone without the decryption key. Additionally, SVault will empower you to securely share your files with others. With its user-friendly interface, SVault makes data protection and secure sharing a breeze.",
-      "features": [
-        {
-          "title": "Local File Encryption",
-          "items": ["Encrypt your files on your device for maximum security."]
-        },
-        {
-          "title": "User-Friendly Interface",
-          "items": [
-            "SVault's intuitive design makes it easy to manage your file encryption and sharing needs."
-          ]
-        }
-      ]
-    }
+    "platforms": ["Desktop"]
+  },
+  {
+    "name": "KNUST AIM API",
+    "id": "SVault",
+    "github": "https://github.com/owbird/KNUST-AIM-API",
+    "url": "https://github.com/owbird/KNUST-AIM-API",
+    "short_description": "An API for KNUST AIM.",
+    "platforms": ["API"]
+  },
+  {
+    "name": "KNUST-AIM-Desktop",
+    "id": "SVault",
+    "github": "https://github.com/owbird/KNUST-AIM-Desktop",
+    "url": "https://github.com/owbird/KNUST-AIM-Desktop",
+    "short_description": "A Desktop version of the KNUST AIM App.",
+    "platforms": ["Desktop"]
+  },
+  {
+    "name": "Github Profile Insights",
+    "id": "Awesome-Github-Insights",
+    "github": "https://github.com/owbird/Awesome-Github-Insights",
+    "url": "https://awesome-gh-insights.vercel.app/",
+    "short_description": "Beautiful insights into a Github user account.",
+    "platforms": ["Website"]
+  },
+  {
+    "name": "KNUST Admission Analytics",
+    "id": "Admission-Analytics-KNUST",
+    "github": "https://github.com/owbird/Admission-Analytics-KNUST",
+    "url": "https://admission-analytics-knust.vercel.app",
+    "short_description": "Analytics for the KNUST admission list.",
+    "platforms": ["Website"]
+  },
+  {
+    "name": "One Dev",
+    "id": "One-Dev",
+    "github": "https://github.com/owbird/One-Dev",
+    "url": "https://one-dev.vercel.app",
+    "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs.",
+    "platforms": ["Desktop"]
+  },
+  {
+    "name": "Youtube Manager",
+    "id": "Yt-Mgr",
+    "github": "https://github.com/owbird/yt-mgr",
+    "url": "https://yt-mgr.vercel.app/",
+    "short_description": "A Website to download YouTube videos in different formats with playlist and captions support.",
+    "platforms": ["Website"]
   },
   {
     "name": "Smart Bible",
-    "image": "https://ui-avatars.com/api/?name=Smart-Bible&size=512&format=png",
     "id": "Smart-Bible",
     "github": "https://github.com/owbird/Smart-Bible",
     "url": "https://github.com/owbird/Smart-Bible",
     "short_description": "A Search Engine for the Bible using open source Machine Learning models ",
-    "platforms": ["Website"],
-    "content": {
-      "title": "Explore the Bible with Smart Search",
-      "body": "Smart Bible is a website that leverages open-source machine learning models to create a powerful search engine specifically for the Bible.  This innovative tool allows you to easily find and explore specific passages, verses, or topics within the Bible.  With Smart Bible, you can gain deeper insights and understanding from the scriptures.",
-      "features": [
-        {
-          "title": "Powerful Search Functionality",
-          "items": [
-            "Search the Bible using keywords, phrases, or specific topics."
-          ]
-        },
-        {
-          "title": "Open Source Machine Learning",
-          "items": [
-            "Smart Bible utilizes open-source machine learning models to deliver fast and accurate search results."
-          ]
-        },
-        {
-          "title": "Gain Deeper Understanding",
-          "items": [
-            "Smart Bible helps you explore the Bible more effectively and gain a richer understanding of its content."
-          ]
-        }
-      ]
-    }
+    "platforms": ["Website"]
   },
   {
     "name": "Github Friends",
-    "image": "/assets/img/ss/gh-friends.png",
     "id": "Gh-Friends",
     "github": "https://github.com/owbird/gh-friends",
     "url": "https://github.com/owbird/gh-friends",
     "short_description": "A Graph network visualization of a Github user's network. ",
-    "platforms": ["Website"],
-    "content": {
-      "title": "Visualize Your Github Network",
-      "body": "Github Friends is a website that creates a visual graph network depicting your connections on Github. With Github Friends, you can gain a better understanding of your developer community and explore potential collaborations.",
-      "features": [
-        {
-          "title": "Network Graph Visualization",
-          "items": [
-            "See your connections on Github represented in a user-friendly graph network."
-          ]
-        },
-        {
-          "title": "Explore Collaborations",
-          "items": [
-            "Gain insights into your developer network and identify potential collaboration opportunities."
-          ]
-        },
-        {
-          "title": "Understand Your Developer Community",
-          "items": [
-            "Visualize your connections on Github to get a better sense of the developer community you interact with."
-          ]
-        }
-      ]
-    }
+    "platforms": ["Website"]
   },
   {
     "name": "Github Commits Counter",
-    "image": "https://ui-avatars.com/api/?name=Github-Commits-Counter&size=512&format=png",
     "id": "Github-Commits-Counter",
     "github": "https://github.com/owbird/github-commits-counter",
     "url": "https://github.com/owbird/github-commits-counter",
     "short_description": "Get a shields.io badge for the total commits of the month",
-    "platforms": ["API"],
-    "content": {
-      "title": "Track Your Monthly Commits with a Badge",
-      "body": "Github Commits Counter is an API that allows you to generate a shields.io badge displaying your total commit count for the current month on Github. This badge can be easily integrated into your profile or project readme, providing a visual representation of your coding activity. With Github Commits Counter, you can stay motivated and track your progress throughout the month.",
-      "features": [
-        {
-          "title": "Shields.io Badge Generation",
-          "items": [
-            "Generate a dynamic badge showcasing your monthly Github commit count."
-          ]
-        },
-        {
-          "title": "Motivation and Tracking",
-          "items": [
-            "Use the badge to visualize your coding activity and stay motivated throughout the month."
-          ]
-        },
-        {
-          "title": "Easy Integration",
-          "items": [
-            "Integrate the generated badge seamlessly into your Github profile or project readme."
-          ]
-        }
-      ]
-    }
+    "platforms": ["API"]
   },
   {
     "name": "WhatsApp || Telegram Chat Analysis",
-    "image": "https://ui-avatars.com/api/?name=WA/TA&size=512&format=png",
     "id": "WhatsApp-Telegram-Chat-Analysis",
     "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
     "url": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
     "short_description": "It visualizes the most used words, hours texted, and general sentiments by the other party.",
-    "platforms": ["Website"],
-    "content": {
-      "title": "Gain Insights into Your Chats",
-      "body": "WhatsApp || Telegram Chat Analysis is a website that helps you understand your communication patterns on WhatsApp or Telegram. It analyzes your chat history and provides visualizations of the most frequently used words, the times of day you chat the most, and even the general sentiment of your conversations. With this information, you can gain valuable insights into your communication style and the dynamics of your chats.",
-      "features": [
-        {
-          "title": "Visualized Word Frequency",
-          "items": ["See which words are used most often in your chats."]
-        },
-        {
-          "title": "Chat Time Analysis",
-          "items": [
-            "Identify the times of day when your chats are most frequent."
-          ]
-        },
-        {
-          "title": "Sentiment Analysis",
-          "items": [
-            "Get a general idea of the emotional tone of your conversations."
-          ]
-        }
-      ]
-    }
+    "platforms": ["Website"]
   }
 ]
