@@ -32,15 +32,8 @@ export default function ProjectsPage() {
               )}
             >
               <ProjectPlatformsBadge platforms={platforms} />
-              <div className="flex items-center hover:text-green-500">
-                <Link
-                  target="_blank"
-                  href={`/projects/${id}`}
-                  className="font-bold text-xl mr-2"
-                >
-                  {name}
-                </Link>
-                <FaLink />
+              <div className=" font-bold text-xl mr-2 hover:text-green-500">
+                {name}
               </div>
               <p className="text-gray-300">{short_description}</p>
 
