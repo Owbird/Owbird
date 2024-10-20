@@ -10,7 +10,7 @@ export const metadata: Metadata = generate_metadata({
   Sometimes they listen.
   Sometimes.
   `,
-  image: "",
+  image: "https://owbird.site/assets/img/owbird.png",
 });
 
 function App() {
