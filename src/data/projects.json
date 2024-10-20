@@ -16,6 +16,30 @@
     "platforms": ["Desktop"]
   },
   {
+    "name": "Vercel Account Manager",
+    "id": "vercel-account-manager",
+    "github": "https://github.com/owbird/vercel-account-manager",
+    "url": "https://github.com/owbird/vercel-account-manager/releases",
+    "short_description": "A tool to checkout multiple vercel accounts via the official CLI",
+    "platforms": ["CLI"]
+  },
+  {
+    "name": "React Utility Belt",
+    "id": "react-utility-belt",
+    "github": "https://github.com/owbird/react-utility-belt",
+    "url": "https://www.npmjs.com/package/react-utility-belt",
+    "short_description": "A tool to checkout multiple vercel accounts via the official CLI",
+    "platforms": ["PKG", "CLI"]
+  },
+  {
+    "name": "ReSysTor",
+    "id": "resystor",
+    "github": "https://github.com/owbird/resystor",
+    "url": "https://github.com/owbird/resystor/releases",
+    "short_description": "A dead simple REmote SYStem MoniTOR",
+    "platforms": ["CLI"]
+  },
+  {
     "name": "KNUST AIM API",
     "id": "SVault",
     "github": "https://github.com/owbird/KNUST-AIM-API",
@@ -43,7 +67,7 @@
     "name": "KNUST Admission Analytics",
     "id": "Admission-Analytics-KNUST",
     "github": "https://github.com/owbird/Admission-Analytics-KNUST",
-    "url": "https://admission-analytics-knust.vercel.app",
+    "url": "https://knust-admission-analytics.owbird.site",
     "short_description": "Analytics for the KNUST admission list.",
     "platforms": ["Website"]
   },
