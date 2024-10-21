@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { Metadata } from "next";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
-import WhiteButton from "@/components/WhiteButton";
 
 export const metadata: Metadata = {
   title: "Projects | Owbird",
@@ -20,36 +19,28 @@ export default function ProjectsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {projects.map(
-          ({ id, name, platforms, short_description, url, github }, index) => (
-            <div
-              key={id}
-              className={clsx(
-                "mr-2 animate__animated border border-white p-4 rounded-md flex flex-col justify-between",
-                index % 2 === 0
-                  ? "animate__lightSpeedInRight"
-                  : "animate__lightSpeedInLeft",
-              )}
-            >
-              <ProjectPlatformsBadge platforms={platforms} />
-              <div className=" font-bold text-xl mr-2 hover:text-green-500">
-                {name}
-              </div>
-              <p className="text-gray-300">{short_description}</p>
+        {projects.map(({ id, name, platforms, short_description }, index) => (
+          <Link
+            key={id}
+            href={`/projects/${id}`}
+            className={clsx(
+              "mr-2 animate__animated border border-white p-4 rounded-md flex flex-col justify-between",
+              index % 2 === 0
+                ? "animate__lightSpeedInRight"
+                : "animate__lightSpeedInLeft",
+            )}
+          >
+            <ProjectPlatformsBadge platforms={platforms} />
+            <div className="flex gap-2 items-center font-bold text-xl mr-2 hover:text-green-500">
+              {name}
 
-              <div className="flex mt-4 mb-4">
-                <div className="mr-2">
-                  <WhiteButton label={"Github"} href={github} />
-                </div>
-                {github !== url && (
-                  <div className="mr-2">
-                    <WhiteButton label={"Website"} href={url} />
-                  </div>
-                )}
-              </div>
+              <span>
+                <FaLink size={15} />
+              </span>
             </div>
-          ),
-        )}
+            <p className="text-gray-300">{short_description}</p>
+          </Link>
+        ))}
       </div>
     </div>
   );

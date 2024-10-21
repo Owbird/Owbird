@@ -41,7 +41,7 @@
   },
   {
     "name": "KNUST AIM API",
-    "id": "SVault",
+    "id": "KNUST-aim-api",
     "github": "https://github.com/owbird/KNUST-AIM-API",
     "url": "https://github.com/owbird/KNUST-AIM-API",
     "short_description": "An API for KNUST AIM.",
@@ -49,7 +49,7 @@
   },
   {
     "name": "KNUST-AIM-Desktop",
-    "id": "SVault",
+    "id": "KNUST-aim-desktop",
     "github": "https://github.com/owbird/KNUST-AIM-Desktop",
     "url": "https://github.com/owbird/KNUST-AIM-Desktop",
     "short_description": "A Desktop version of the KNUST AIM App.",
