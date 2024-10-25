@@ -4,11 +4,13 @@ import { notFound } from "next/navigation";
 import { GoStar, GoEye, GoRepoForked } from "react-icons/go";
 import { BiTime, BiTag } from "react-icons/bi";
 import { VscCode } from "react-icons/vsc";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaGlobe, FaGlobeAfrica, FaSitemap } from "react-icons/fa";
 import Link from "next/link";
 import { remark } from "remark";
 import html from "remark-html";
 import { Metadata } from "next";
+import ProjectPlatformsBadge from "@/components/project/ProjectPlatformsBadge";
+import WhiteButton from "@/components/WhiteButton";
 
 interface Props {
   params: { id: string; github: string };
@@ -80,14 +82,20 @@ const ProjectPage = async ({ params }: Props) => {
       </div>
 
       <div className=" text-black max-w-4xl p-6 bg-gray-100 rounded-lg shadow-lg border-4 border-green-500">
-        <div className="flex gap-2 items-center">
+        <div className="text-white">
+          <ProjectPlatformsBadge platforms={project.platforms} />
+        </div>
+        <div className="items-center">
           <h1 className="text-3xl font-bold mb-2">{repoData.name}</h1>
-          <Link href={project.github}>
-            <FaGithub size={25} />
-          </Link>
         </div>
         <p className="text-gray-600 mb-6">{repoData.description}</p>
 
+        <div className="mb-4 flex gap-2">
+          <WhiteButton invert href={project.github} label="GitHub" />
+          {project.github !== project.url && (
+            <WhiteButton invert href={project.url} label="Website" />
+          )}
+        </div>
         <div
           className="mb-4"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
@@ -149,7 +157,7 @@ const ProjectPage = async ({ params }: Props) => {
 
           {(releases as any[]).map((release) => (
             <Link href={release.html_url} key={release.id}>
-              <div className="flex items-center bg-white p-4 rounded-lg shadow">
+              <div className="flex items-center bg-white p-4 mb-2 rounded-lg shadow">
                 <div>
                   <span>{release.tag_name}</span>
                   <div className="text-2xl font-semibold">
