@@ -28,7 +28,7 @@
     "id": "react-utility-belt",
     "github": "https://github.com/owbird/react-utility-belt",
     "url": "https://www.npmjs.com/package/react-utility-belt",
-    "short_description": "A tool to checkout multiple vercel accounts via the official CLI",
+    "short_description": "A set of utilities to easily handle react projects",
     "platforms": ["PKG", "CLI"]
   },
   {
