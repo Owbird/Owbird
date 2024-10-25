@@ -8,12 +8,22 @@ import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { remark } from "remark";
 import html from "remark-html";
+import { Metadata } from "next";
 
 interface Props {
   params: { id: string; github: string };
 }
 
-export const revalidate = 86400
+export const revalidate = 86400;
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  const project = projects.find((project) => project.id === params.id);
+
+  return {
+    title: project?.name,
+    description: project?.short_description,
+  };
+};
 
 export async function generateStaticParams() {
   const projectIds = projects.map(({ id }) => ({ id }));
