@@ -33,12 +33,12 @@ export default function About() {
         <br />
         <p>👇 You can also find me here 👇</p>
 
-        <div className="flex mt-8 lg:mt-4">
+        <div className="grid grid-cols-2 lg:flex gap-4 mt-8 lg:mt-4">
           {socialLinks.map(({ label, href }, index) => (
             <div
               key={href}
               className={clsx(
-                "mr-2 animate__animated",
+                "mr-2 animate__animated mb-4",
                 index % 2 === 0
                   ? "animate__lightSpeedInRight"
                   : "animate__lightSpeedInLeft",
