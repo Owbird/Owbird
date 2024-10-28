@@ -5,7 +5,7 @@ import { FaArrowCircleDown } from "react-icons/fa";
 const Hero = () => {
   const scrollToView = () => {
     const section = document.querySelector("#menu")!;
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    section.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
   return (

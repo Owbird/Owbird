@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 export default function About() {
   const randomAnimations = ["animate__animated animate__bounce"];
   return (
-    <div className="mt-4 mr-4 ml-4">
+    <div className="mr-4 ml-4 h-screen">
       <div className="flex justify-end">
         <NavBar />
       </div>
-      <div className="flex flex-col justify-center items-center h-screen">
+      <div className="mt-4 flex flex-col justify-center items-center ">
         <Image
           className="animate__animated animate__rotateIn rounded-full"
           height={200}
