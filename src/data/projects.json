@@ -32,6 +32,14 @@
     "platforms": ["PKG", "CLI"]
   },
   {
+    "name": "Ram Guard",
+    "id": "ram-guard",
+    "github": "https://github.com/owbird/ram-guard",
+    "url": "https://github.com/owbird/ram-guard/releases",
+    "short_description": "A lightweight tool to guard your memory usage.",
+    "platforms": ["CLI"]
+  },
+  {
     "name": "ReSysTor",
     "id": "resystor",
     "github": "https://github.com/owbird/resystor",
