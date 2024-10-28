@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { GoStar, GoEye, GoRepoForked } from "react-icons/go";
 import { BiTime, BiTag } from "react-icons/bi";
 import { VscCode } from "react-icons/vsc";
-import { FaGithub, FaGlobe, FaGlobeAfrica, FaSitemap } from "react-icons/fa";
 import Link from "next/link";
 import { remark } from "remark";
 import html from "remark-html";
@@ -97,7 +96,7 @@ const ProjectPage = async ({ params }: Props) => {
           )}
         </div>
         <div
-          className="mb-4"
+          className="mb-4 max-w-[15rem] lg:max-w-full"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
