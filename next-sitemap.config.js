@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://owbird.site",
+  siteUrl: "https://www.owbird.site",
   generateRobotsTxt: true,
   exclude: ["/api/*"]
 };
