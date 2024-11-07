@@ -1,6 +1,7 @@
 export const navLinks = [
   { label: "About me", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "https://blog.owbird.site" },
 ];
 
 export const socialLinks = [
