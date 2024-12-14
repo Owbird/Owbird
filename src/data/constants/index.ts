@@ -1,6 +1,7 @@
 export const navLinks = [
   { label: "About me", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "https://blog.owbird.site/" },
 ];
 
 export const socialLinks = [
@@ -9,4 +10,5 @@ export const socialLinks = [
   { label: "Github", href: "https://github.com/owbird" },
   { label: "X (Twitter)", href: "https://x.com/_owbird_" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/obed-forkuo/" },
+  { label: "Blog", href: "https://blog.owbird.site/" },
 ];
