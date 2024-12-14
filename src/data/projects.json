@@ -47,6 +47,14 @@
     "short_description": "A dead simple REmote SYStem MoniTOR",
     "platforms": ["CLI"]
   },
+   {
+    "name": "Blue-DOS",
+    "id": "blue-dos",
+    "github": "https://github.com/owbird/blue-dos",
+    "url": "https://github.com/owbird/blue-dos",
+    "short_description": "Blue-DOS: A Bluetooth Denial of Service Tool",
+    "platforms": ["CLI"]
+  },
   {
     "name": "KNUST AIM API",
     "id": "KNUST-aim-api",
