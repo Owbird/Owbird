@@ -1,6 +1,11 @@
 "use client";
 
-import { FaArrowCircleDown } from "react-icons/fa";
+import { useEffect } from "react";
+import {
+  adjectives,
+  animals,
+  uniqueNamesGenerator,
+} from "unique-names-generator";
 
 const Hero = () => {
   const scrollToView = () => {
@@ -8,21 +13,22 @@ const Hero = () => {
     section.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
+  const shortName = uniqueNamesGenerator({
+    dictionaries: [adjectives, animals],
+    separator: " ",
+    length: 2,
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      scrollToView();
+    }, 1000);
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center h-screen text-[5rem] text-center">
-      <p className="animate__animated animate__fadeInDown">Heyo,</p>
-      <p className="animate__animated animate__fadeInLeft">You found me</p>
-      <p className="animate__animated animate__fadeInUp">🙈</p>
-      <div className="cursor-pointer" onClick={scrollToView}>
-        <FaArrowCircleDown
-          size={30}
-          className="absolute bottom-10 ml-[-40px] h-20 w-20 opacity-75 animate-ping"
-        />
-        <FaArrowCircleDown
-          size={30}
-          className="absolute bottom-10 ml-[-18px]"
-        />
-      </div>
+      <p className="animate__animated animate__fadeInDown">Welcome,</p>
+      <p className="animate__animated animate__fadeInDow text-[3rem]">{shortName}</p>
     </div>
   );
 };
