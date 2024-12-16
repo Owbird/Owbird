@@ -10,6 +10,8 @@ import html from "remark-html";
 import { Metadata } from "next";
 import ProjectPlatformsBadge from "@/components/project/ProjectPlatformsBadge";
 import WhiteButton from "@/components/WhiteButton";
+import { Fragment } from "react";
+import Head from "next/head";
 
 interface Props {
   params: { id: string; github: string };
@@ -75,103 +77,109 @@ const ProjectPage = async ({ params }: Props) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-row justify-self-end mb-8">
-        <NavBar />
-      </div>
+    <Fragment>
+      <Head>
+        <Link rel="canonical" href={`https://www.owbird.site/projects/${id}`} />
+      </Head>
 
-      <div className=" text-black max-w-4xl p-6 bg-gray-100 rounded-lg shadow-lg border-4 border-green-500">
-        <div className="text-white">
-          <ProjectPlatformsBadge platforms={project.platforms} />
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-row justify-self-end mb-8">
+          <NavBar />
         </div>
-        <div className="items-center">
-          <h1 className="text-3xl font-bold mb-2">{repoData.name}</h1>
-        </div>
-        <p className="text-gray-600 mb-6">{repoData.description}</p>
 
-        <div className="mb-4 flex gap-2">
-          <WhiteButton invert href={project.github} label="GitHub" />
-          {project.github !== project.url && (
-            <WhiteButton invert href={project.url} label="Website" />
-          )}
-        </div>
-        <div
-          className="mb-4 max-w-[15rem] lg:max-w-full"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <div className=" text-black max-w-4xl p-6 bg-gray-100 rounded-lg shadow-lg border-4 border-green-500">
+          <div className="text-white">
+            <ProjectPlatformsBadge platforms={project.platforms} />
+          </div>
+          <div className="items-center">
+            <h1 className="text-3xl font-bold mb-2">{repoData.name}</h1>
+          </div>
+          <p className="text-gray-600 mb-6">{repoData.description}</p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-          <div className="flex items-center bg-white p-4 rounded-lg shadow">
-            <GoStar size={50} className="text-yellow-400 mr-2" />
-            <div>
-              <div className="text-2xl font-semibold">
-                {repoData.stargazers_count}
+          <div className="mb-4 flex gap-2">
+            <WhiteButton invert href={project.github} label="GitHub" />
+            {project.github !== project.url && (
+              <WhiteButton invert href={project.url} label="Website" />
+            )}
+          </div>
+          <div
+            className="mb-4 max-w-[15rem] lg:max-w-full"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+            <div className="flex items-center bg-white p-4 rounded-lg shadow">
+              <GoStar size={50} className="text-yellow-400 mr-2" />
+              <div>
+                <div className="text-2xl font-semibold">
+                  {repoData.stargazers_count}
+                </div>
+                <div className="text-sm text-gray-500">Stars</div>
               </div>
-              <div className="text-sm text-gray-500">Stars</div>
+            </div>
+            <div className="flex items-center bg-white p-4 rounded-lg shadow">
+              <GoRepoForked size={50} className="text-blue-500 mr-2" />
+              <div>
+                <div className="text-2xl font-semibold">
+                  {repoData.forks_count}
+                </div>
+                <div className="text-sm text-gray-500">Forks</div>
+              </div>
+            </div>
+            <div className="flex items-center bg-white p-4 rounded-lg shadow">
+              <GoEye size={50} className="text-green-500 mr-2" />
+              <div>
+                <div className="text-2xl font-semibold">
+                  {repoData.watchers_count}
+                </div>
+                <div className="text-sm text-gray-500">Watchers</div>
+              </div>
             </div>
           </div>
-          <div className="flex items-center bg-white p-4 rounded-lg shadow">
-            <GoRepoForked size={50} className="text-blue-500 mr-2" />
-            <div>
-              <div className="text-2xl font-semibold">
-                {repoData.forks_count}
-              </div>
-              <div className="text-sm text-gray-500">Forks</div>
+
+          <div className="flex flex-wrap gap-4">
+            <div className="flex items-center bg-white px-4 py-2 rounded-full shadow">
+              <BiTime size={50} className="text-gray-400 mr-2" />
+              <span className="text-sm">
+                Updated on {formatDate(repoData.updated_at)}
+              </span>
+            </div>
+            <div className="flex items-center bg-white px-4 py-2 rounded-full shadow">
+              <VscCode size={30} className="text-purple-500 mr-2" />
+              <span className="text-sm">{repoData.language}</span>
+            </div>
+            <div className="flex items-center bg-white px-4 py-2 rounded-full shadow">
+              <BiTag size={30} className="text-purple-500 mr-2" />
+              <span className="text-sm">
+                {tags.length > 0 ? tags[0].name : "No tags yet"}
+              </span>
             </div>
           </div>
-          <div className="flex items-center bg-white p-4 rounded-lg shadow">
-            <GoEye size={50} className="text-green-500 mr-2" />
-            <div>
-              <div className="text-2xl font-semibold">
-                {repoData.watchers_count}
-              </div>
-              <div className="text-sm text-gray-500">Watchers</div>
-            </div>
-          </div>
-        </div>
 
-        <div className="flex flex-wrap gap-4">
-          <div className="flex items-center bg-white px-4 py-2 rounded-full shadow">
-            <BiTime size={50} className="text-gray-400 mr-2" />
-            <span className="text-sm">
-              Updated on {formatDate(repoData.updated_at)}
-            </span>
-          </div>
-          <div className="flex items-center bg-white px-4 py-2 rounded-full shadow">
-            <VscCode size={30} className="text-purple-500 mr-2" />
-            <span className="text-sm">{repoData.language}</span>
-          </div>
-          <div className="flex items-center bg-white px-4 py-2 rounded-full shadow">
-            <BiTag size={30} className="text-purple-500 mr-2" />
-            <span className="text-sm">
-              {tags.length > 0 ? tags[0].name : "No tags yet"}
-            </span>
-          </div>
-        </div>
+          <div className="mt-4">
+            {releases.length === 0 && <p> No release yet</p>}
 
-        <div className="mt-4">
-          {releases.length === 0 && <p> No release yet</p>}
+            <h2>Releases</h2>
 
-          <h2>Releases</h2>
-
-          {(releases as any[]).map((release) => (
-            <Link href={release.html_url} key={release.id}>
-              <div className="flex items-center bg-white p-4 mb-2 rounded-lg shadow">
-                <div>
-                  <span>{release.tag_name}</span>
-                  <div className="text-2xl font-semibold">
-                    <p>{release.name || release.body}</p>
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    Published on {formatDate(release.published_at)}
+            {(releases as any[]).map((release) => (
+              <Link href={release.html_url} key={release.id}>
+                <div className="flex items-center bg-white p-4 mb-2 rounded-lg shadow">
+                  <div>
+                    <span>{release.tag_name}</span>
+                    <div className="text-2xl font-semibold">
+                      <p>{release.name || release.body}</p>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      Published on {formatDate(release.published_at)}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
