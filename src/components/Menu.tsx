@@ -22,6 +22,7 @@ const Menu = () => {
       className="flex flex-col justify-center items-center h-screen text-center"
     >
       <div className="animate__animated animate__bounce text-[4rem] lg:text-[5rem]">
+        <p>Hi there, welcome!</p>
         <p>What would we like to know?</p>
       </div>
 
