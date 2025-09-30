@@ -20,7 +20,7 @@ interface Props {
 export const revalidate = 86400;
 
 export const generateMetadata = ({ params }: Props): Metadata => {
-  const project = projects.find((project) => project.id === params.id);
+  const project = projects.find((project) => project.id.toLowerCase() === params.id.toLowerCase());
 
   return {
     title: project?.name,
@@ -37,7 +37,7 @@ export async function generateStaticParams() {
 const ProjectPage = async ({ params }: Props) => {
   const { id } = params;
 
-  const project = projects.find((project) => project.id === id);
+  const project = projects.find((project) => project.id.toLowerCase() === params.id.toLowerCase());
 
   if (!project) return notFound();
 
