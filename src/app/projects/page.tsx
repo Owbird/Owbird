@@ -1,6 +1,6 @@
 import NavBar from "@/components/NavBar";
 import ProjectPlatformsBadge from "@/components/project/ProjectPlatformsBadge";
-import projects from "@/data/projects.json";
+import rawProjects from "@/data/projects.json";
 import clsx from "clsx";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -11,7 +11,33 @@ export const metadata: Metadata = {
   description: "My projects",
 };
 
-export default function ProjectsPage() {
+const getRepoData = async (id: string) => {
+  const headers = {
+    Authorization: `Bearer ${process.env.GIT_TOKEN}`,
+  };
+
+  const res = await fetch(`https://api.github.com/repos/owbird/${id}`, {
+    headers,
+  });
+
+  const repoData = await res.json();
+
+  return repoData;
+};
+
+const getProjects = async () => {
+  const projects = await Promise.all(
+    rawProjects.map(async (proj) => ({
+      ...proj,
+      ...(await getRepoData(proj.id)),
+    })),
+  );
+
+  return projects;
+};
+
+export default async function ProjectsPage() {
+  const projects = await getProjects();
   return (
     <div className="ml-4 mr-4">
       <div className="flex justify-end mb-8">
@@ -19,10 +45,10 @@ export default function ProjectsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {projects.map(({ id, name, platforms, short_description }, index) => (
+        {projects.map(({ id,github, name, platforms, description }, index) => (
           <Link
             key={id}
-            href={`/projects/${id}`}
+            href={`${github}`}
             className={clsx(
               "mr-2 animate__animated border border-white p-4 rounded-md flex flex-col justify-between",
               index % 2 === 0
@@ -38,7 +64,7 @@ export default function ProjectsPage() {
                 <FaLink size={15} />
               </span>
             </div>
-            <p className="text-gray-300">{short_description}</p>
+            <p className="text-gray-300">{description}</p>
           </Link>
         ))}
       </div>

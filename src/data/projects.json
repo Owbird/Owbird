@@ -1,18 +1,16 @@
 [
   {
-    "name": "SVault Engine",
-    "id": "svault-engine",
-    "github": "https://github.com/owbird/svault-engine",
-    "url": "https://github.com/owbird/svault-engine",
-    "short_description": "A vault-based Virtual File System offering secure file encryption, cross-device sharing, and file server hosting.",
+    "name": "SNetT Engine",
+    "id": "snett-engine",
+    "github": "https://github.com/owbird/snett-engine",
+    "url": "https://github.com/owbird/snett-engine",
     "platforms": ["PKG", "CLI"]
   },
   {
-    "name": "SVault",
-    "id": "SVault",
-    "github": "https://github.com/owbird/SVault",
-    "url": "https://github.com/owbird/SVault",
-    "short_description": "A desktop application that enables users to encrypt their files locally or securely share them.",
+    "name": "SNetT",
+    "id": "SNetT",
+    "github": "https://github.com/owbird/SNetT",
+    "url": "https://github.com/owbird/SNetT",
     "platforms": ["Desktop"]
   },
   {
@@ -20,7 +18,6 @@
     "id": "vercel-account-manager",
     "github": "https://github.com/owbird/vercel-account-manager",
     "url": "https://github.com/owbird/vercel-account-manager/releases",
-    "short_description": "A tool to checkout multiple vercel accounts via the official CLI",
     "platforms": ["CLI"]
   },
   {
@@ -28,7 +25,6 @@
     "id": "react-utility-belt",
     "github": "https://github.com/owbird/react-utility-belt",
     "url": "https://www.npmjs.com/package/react-utility-belt",
-    "short_description": "A set of utilities to easily handle react projects",
     "platforms": ["PKG", "CLI"]
   },
   {
@@ -36,7 +32,6 @@
     "id": "ram-guard",
     "github": "https://github.com/owbird/ram-guard",
     "url": "https://github.com/owbird/ram-guard/releases",
-    "short_description": "A lightweight tool to guard your memory usage.",
     "platforms": ["CLI"]
   },
   {
@@ -44,7 +39,6 @@
     "id": "resystor",
     "github": "https://github.com/owbird/resystor",
     "url": "https://github.com/owbird/resystor/releases",
-    "short_description": "A dead simple REmote SYStem MoniTOR",
     "platforms": ["CLI"]
   },
    {
@@ -52,7 +46,6 @@
     "id": "blue-dos",
     "github": "https://github.com/owbird/blue-dos",
     "url": "https://github.com/owbird/blue-dos",
-    "short_description": "Blue-DOS: A Bluetooth Denial of Service Tool",
     "platforms": ["CLI"]
   },
   {
@@ -60,79 +53,20 @@
     "id": "KNUST-aim-api",
     "github": "https://github.com/owbird/KNUST-AIM-API",
     "url": "https://github.com/owbird/KNUST-AIM-API",
-    "short_description": "An API for KNUST AIM.",
-    "platforms": ["API"]
+    "platforms": ["API", "PKG"]
   },
   {
     "name": "KNUST-AIM-Desktop",
     "id": "KNUST-aim-desktop",
     "github": "https://github.com/owbird/KNUST-AIM-Desktop",
     "url": "https://github.com/owbird/KNUST-AIM-Desktop",
-    "short_description": "A Desktop version of the KNUST AIM App.",
     "platforms": ["Desktop"]
-  },
-  {
-    "name": "Github Profile Insights",
-    "id": "Awesome-Github-Insights",
-    "github": "https://github.com/owbird/Awesome-Github-Insights",
-    "url": "https://awesome-gh-insights.vercel.app/",
-    "short_description": "Beautiful insights into a Github user account.",
-    "platforms": ["Website"]
-  },
-  {
-    "name": "KNUST Admission Analytics",
-    "id": "Admission-Analytics-KNUST",
-    "github": "https://github.com/owbird/Admission-Analytics-KNUST",
-    "url": "https://knust-admission-analytics.owbird.site",
-    "short_description": "Analytics for the KNUST admission list.",
-    "platforms": ["Website"]
   },
   {
     "name": "One Dev",
     "id": "One-Dev",
     "github": "https://github.com/owbird/One-Dev",
     "url": "https://one-dev.vercel.app",
-    "short_description": "A Desktop application that has common tools used by developers in one place and can be accessed in tabs.",
     "platforms": ["Desktop"]
-  },
-  {
-    "name": "Youtube Manager",
-    "id": "Yt-Mgr",
-    "github": "https://github.com/owbird/yt-mgr",
-    "url": "https://yt-mgr.vercel.app/",
-    "short_description": "A Website to download YouTube videos in different formats with playlist and captions support.",
-    "platforms": ["Website"]
-  },
-  {
-    "name": "Smart Bible",
-    "id": "Smart-Bible",
-    "github": "https://github.com/owbird/Smart-Bible",
-    "url": "https://github.com/owbird/Smart-Bible",
-    "short_description": "A Search Engine for the Bible using open source Machine Learning models ",
-    "platforms": ["Website"]
-  },
-  {
-    "name": "Github Friends",
-    "id": "Gh-Friends",
-    "github": "https://github.com/owbird/gh-friends",
-    "url": "https://github.com/owbird/gh-friends",
-    "short_description": "A Graph network visualization of a Github user's network. ",
-    "platforms": ["Website"]
-  },
-  {
-    "name": "Github Commits Counter",
-    "id": "Github-Commits-Counter",
-    "github": "https://github.com/owbird/github-commits-counter",
-    "url": "https://github.com/owbird/github-commits-counter",
-    "short_description": "Get a shields.io badge for the total commits of the month",
-    "platforms": ["API"]
-  },
-  {
-    "name": "WhatsApp || Telegram Chat Analysis",
-    "id": "WhatsApp-Telegram-Chat-Analysis",
-    "github": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
-    "url": "https://github.com/owbird/WhatsApp-Telegram-Chat-Analysis",
-    "short_description": "It visualizes the most used words, hours texted, and general sentiments by the other party.",
-    "platforms": ["Website"]
   }
 ]
