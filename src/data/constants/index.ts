@@ -1,7 +1,7 @@
 export const navLinks = [
   { label: "About me", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Blog", href: "https://blog.owbird.site/" },
+  { label: "Blog", href: "https://blog.owbird.dev/" },
 ];
 
 export const socialLinks = [
@@ -9,7 +9,7 @@ export const socialLinks = [
   { label: "Phone", href: "tel:233265542141" },
   { label: "Github", href: "https://github.com/owbird" },
   { label: "X (Twitter)", href: "https://x.com/_owbird_" },
-  // { label: "TikTok", href: "https://www.tiktok.com/@owbird.dev" },
+  { label: "TikTok", href: "https://www.tiktok.com/@owbird.dev" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/obed-forkuo/" },
-  { label: "Blog", href: "https://blog.owbird.site/" },
+  { label: "Blog", href: "https://blog.owbird.dev/" },
 ];

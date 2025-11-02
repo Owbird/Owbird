@@ -4,7 +4,7 @@ export async function GET() {
   const jsContent = `
   const footer = \`
   
-<a href="https://owbird.site/projects" class="owbird-credit-link">
+<a href="https://owbird.dev/projects" class="owbird-credit-link">
   <div class="owbird-credit-card">
     <div class="owbird-credit-gradient-border">
       <div class="owbird-credit-inner-content">
