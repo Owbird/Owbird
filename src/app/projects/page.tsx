@@ -27,10 +27,15 @@ const getRepoData = async (id: string) => {
 
 const getProjects = async () => {
   const projects = await Promise.all(
-    rawProjects.map(async (proj) => ({
-      ...proj,
-      ...(await getRepoData(proj.id)),
-    })),
+    rawProjects.map(async (proj) => {
+
+      const { description } = await getRepoData(proj.id);
+
+      return {
+        ...proj,
+        description,
+      };
+    }),
   );
 
   return projects;
@@ -38,6 +43,7 @@ const getProjects = async () => {
 
 export default async function ProjectsPage() {
   const projects = await getProjects();
+
   return (
     <div className="ml-4 mr-4">
       <div className="flex justify-end mb-8">
@@ -45,7 +51,7 @@ export default async function ProjectsPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {projects.map(({ id,github, name, platforms, description }, index) => (
+        {projects.map(({ id, github, name, platforms, description }, index) => (
           <Link
             key={id}
             href={`${github}`}
