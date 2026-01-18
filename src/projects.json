@@ -1,0 +1,72 @@
+[
+  {
+    "name": "SNetT Engine",
+    "id": "snett-engine",
+    "github": "https://github.com/owbird/snett-engine",
+    "url": "https://github.com/owbird/snett-engine",
+    "platforms": ["PKG", "CLI"]
+  },
+  {
+    "name": "SNetT",
+    "id": "SNetT",
+    "github": "https://github.com/owbird/SNetT",
+    "url": "https://github.com/owbird/SNetT",
+    "platforms": ["Desktop"]
+  },
+  {
+    "name": "Vercel Account Manager",
+    "id": "vercel-account-manager",
+    "github": "https://github.com/owbird/vercel-account-manager",
+    "url": "https://github.com/owbird/vercel-account-manager/releases",
+    "platforms": ["CLI"]
+  },
+  {
+    "name": "React Utility Belt",
+    "id": "react-utility-belt",
+    "github": "https://github.com/owbird/react-utility-belt",
+    "url": "https://www.npmjs.com/package/react-utility-belt",
+    "platforms": ["PKG", "CLI"]
+  },
+  {
+    "name": "Ram Guard",
+    "id": "ram-guard",
+    "github": "https://github.com/owbird/ram-guard",
+    "url": "https://github.com/owbird/ram-guard/releases",
+    "platforms": ["CLI"]
+  },
+  {
+    "name": "ReSysTor",
+    "id": "resystor",
+    "github": "https://github.com/owbird/resystor",
+    "url": "https://github.com/owbird/resystor/releases",
+    "platforms": ["CLI"]
+  },
+   {
+    "name": "Blue-DOS",
+    "id": "blue-dos",
+    "github": "https://github.com/owbird/blue-dos",
+    "url": "https://github.com/owbird/blue-dos",
+    "platforms": ["CLI"]
+  },
+  {
+    "name": "KNUST AIM API",
+    "id": "KNUST-aim-api",
+    "github": "https://github.com/owbird/KNUST-AIM-API",
+    "url": "https://github.com/owbird/KNUST-AIM-API",
+    "platforms": ["API", "PKG"]
+  },
+  {
+    "name": "KNUST-AIM-Desktop",
+    "id": "KNUST-aim-desktop",
+    "github": "https://github.com/owbird/KNUST-AIM-Desktop",
+    "url": "https://github.com/owbird/KNUST-AIM-Desktop",
+    "platforms": ["Desktop"]
+  },
+  {
+    "name": "One Dev",
+    "id": "One-Dev",
+    "github": "https://github.com/owbird/One-Dev",
+    "url": "https://one-dev.vercel.app",
+    "platforms": ["Desktop"]
+  }
+]

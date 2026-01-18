@@ -1,24 +1,49 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import "./style.css";
+import projects from "./projects.json";
+import description from "./projects-with-descriptions.json";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const socialLinks = [
+  { label: "Email", href: "mailto:owbirdphorccuo@gmail.com" },
+  { label: "Phone", href: "tel:233265542141" },
+  { label: "Github", href: "https://github.com/owbird" },
+  { label: "X (Twitter)", href: "https://x.com/_owbird_" },
+  { label: "TikTok", href: "https://www.tiktok.com/@owbird.dev" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/obed-forkuo/" },
+  { label: "Blog", href: "https://blog.owbird.dev/" },
+];
 
-setupCounter(document.querySelector('#counter'))
+const projectsEl = document.querySelector("#projects");
+
+projectsEl.innerHTML = "<ul></ul>";
+const projectsList = projectsEl.querySelector("ul");
+
+projects.forEach((project) => {
+  const desc = description.find((d) => d.id === project.id);
+
+  projectsList.innerHTML += `
+    <li>
+      <a href="${project.url}">${project.name}: ${desc?.description ?? ""}</a>
+    </li>
+  `;
+});
+
+const socialsEl = document.querySelector("#socials");
+
+socialsEl.innerHTML = "<ul></ul>";
+const socialsList = socialsEl.querySelector("ul");
+
+socialLinks.forEach(({ label, href }) => {
+  socialsList.innerHTML += `
+    <li>
+      <a href="${href}" target="_blank" rel="noopener noreferrer">
+        ${label}
+      </a>
+    </li>
+  `;
+});
+
+document.querySelector("footer").innerHTML = `
+  <p>
+    &copy; ${new Date().getFullYear()} Obed Forkuo
+  </p>
+`;
