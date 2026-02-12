@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_WcOU8v2j9Ts0SuSR1iLTJgkvjCsQ",
+  "orgId": "team_xpGbHzsUDWmzKfFv1XJkIeo1",
+  "projectName": "owbird",
+  "settings": {
+    "createdAt": 1706400652147,
+    "framework": "vite",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "22.x"
+  }
+}
