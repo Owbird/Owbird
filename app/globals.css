@@ -16,30 +16,26 @@ body {
 
 @layer base {
   :root {
-    /* Dark theme optimized for portfolio */
-    --background: 210 20% 6%;
-    --foreground: 0 0% 100%;
-    --card: 210 15% 8%;
-    --card-foreground: 0 0% 100%;
-    --popover: 210 15% 8%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 210 20% 6%;
-    --secondary: 210 15% 12%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 210 10% 30%;
-    --muted-foreground: 210 5% 60%;
-
-    /* Vibrant golden accent */
-    --accent: 45 100% 51%;
-    --accent-foreground: 210 20% 6%;
-
-    --destructive: 0 84.2% 60.2%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 15% 15%;
-    --input: 210 15% 12%;
-    --ring: 45 100% 51%;
-    --radius: 1rem;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.25rem;
   }
 }
 
@@ -48,35 +44,25 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased selection:bg-white/10 selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
+/* Custom scrollbar - Minimal */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(210 20% 6%);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(210 15% 15%);
-  border-radius: 5px;
+  background: hsl(var(--border));
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(45 100% 51%);
-}
-
-/* Selection */
-::selection {
-  background: hsl(45 100% 51% / 0.3);
-  color: hsl(0 0% 100%);
+  background: hsl(var(--muted-foreground));
 }

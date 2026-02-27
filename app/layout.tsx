@@ -1,41 +1,36 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Analytics } from '@vercel/analytics/next';
-import Script from 'next/script';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Obed Forkuo | Software Engineer & Technical Founder',
-  description: 'Technical founder and software engineer building Africa\'s data infrastructure. Specializing in scalable systems, AI-driven platforms, and cloud-native solutions.',
-  keywords: ['Software Engineer', 'Technical Founder', 'Full-Stack Developer', 'Africa Tech', 'Data Infrastructure', 'AI/ML', 'Cloud Architecture'],
-  authors: [{ name: 'Obed Forkuo' }],
-  creator: 'Obed Forkuo',
+  title: "Obed Forkuo ",
+  description:
+    "Technical founder and systems engineer designing secure infrastructure, developer tooling, and distributed platforms.",
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://owbird.dev',
-    title: 'Obed Forkuo | Software Engineer & Technical Founder',
-    description: 'Building Africa\'s data infrastructure through scalable systems and AI-driven solutions',
-    siteName: 'Obed Forkuo Portfolio',
+    type: "website",
+    locale: "en_US",
+    url: "https://owbird.dev",
+    title: "Obed Forkuo ",
+    description:
+      "Designing secure systems, developer tooling, and distributed platforms for emerging markets.",
+    siteName: "Obed Forkuo",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Obed Forkuo | Software Engineer & Technical Founder',
-    description: 'Building Africa\'s data infrastructure through scalable systems and AI-driven solutions',
+    card: "summary_large_image",
+    title: "Obed Forkuo ",
+    description:
+      "Designing secure systems, developer tooling, and distributed platforms for emerging markets.",
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -56,5 +51,6 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
+
