@@ -12,7 +12,7 @@ export function Hero() {
 
         <div className="space-y-6 max-w-2xl">
           <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-            A Software Engineer.
+            A Software Engineer. A Researcher.
           </p>
         </div>
 
@@ -45,7 +45,7 @@ export function Hero() {
             <Globe className="h-5 w-5" />
           </a>
           <a
-            href="mailto:fork.obed@gmail.com"
+            href="mailto:me@owbird.dev"
             className="text-zinc-500 hover:text-white transition-colors p-1"
             title="Email"
           >
