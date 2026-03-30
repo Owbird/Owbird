@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { MdxContent } from "@/components/mdx-content";
 import { Navbar } from "@/components/navbar";
 import { formatBlogDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
+import { name } from "@/lib/utils";
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -30,7 +31,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Obed Forkuo`,
+    title: `${post.title} | ${name}`,
     description: post.description || post.summary,
   };
 }

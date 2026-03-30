@@ -2,23 +2,24 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { name } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Obed Forkuo ",
+  title: `${name} `,
   description:
     "Technical founder and systems engineer designing secure infrastructure, developer tooling, and distributed platforms.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://owbird.dev",
-    title: "Obed Forkuo ",
+    title: `${name} `,
     description:
       "Designing secure systems, developer tooling, and distributed platforms for emerging markets.",
-    siteName: "Obed Forkuo",
+    siteName: name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Obed Forkuo ",
+    title: `${name} `,
     description:
       "Designing secure systems, developer tooling, and distributed platforms for emerging markets.",
   },

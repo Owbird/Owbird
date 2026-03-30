@@ -3,9 +3,10 @@ import Link from "next/link";
 import { formatBlogDate, getAllPosts } from "@/lib/blog";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { name } from "@/lib/utils";
 
 export const metadata = {
-  title: "Blog | Obed Forkuo",
+  title: `Blog | ${name}`,
   description: "Owbird Writes",
 };
 

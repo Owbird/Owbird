@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { name } from "@/lib/utils";
 export function Navbar() {
   return (
     <nav
@@ -6,7 +7,7 @@ export function Navbar() {
     >
       <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="text-sm font-bold tracking-tighter text-white uppercase">
-          <Link href="/">Obed Forkuo</Link>
+          <Link href="/">{name}</Link>
         </div>
 
         <div className="flex gap-8">

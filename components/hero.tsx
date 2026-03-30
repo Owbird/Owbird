@@ -6,7 +6,7 @@ export function Hero() {
       <div className="max-w-4xl mx-auto">
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-2 text-white">
-            Obed Forkuo
+            Obed D. A. Forkuo
           </h1>
         </header>
 
