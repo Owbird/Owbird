@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Obed Forkuo ",
@@ -46,11 +43,10 @@ export default function RootLayout({
           gtag('config', 'G-QSXV12EN2D');
         `}
       </Script>
-      <body className={inter.className} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         {children}
         <Analytics />
       </body>
     </html>
   );
 }
-

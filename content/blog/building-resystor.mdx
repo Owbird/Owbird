@@ -1,0 +1,406 @@
+---
+description: "Developer tools get adopted when the operational path is shorter, clearer, and safer than the workaround."
+title: 'Building a simple Remote System Monitor'
+date: '2024-10-28'
+tags: ['cli', 'go']
+draft: false
+summary: 'Building a simple Remote System Monitor'
+---
+
+# ReSysTor
+
+![https://github.com/Owbird/ReSysTor/blob/main/assets/ss.png?raw=true](https://github.com/Owbird/ReSysTor/blob/main/assets/ss.png?raw=true)
+
+As a developer, you'd often find yourself opening the system monitor to see how the system is managing processes.
+In my case, I had a separate physical device running heavy processes (my mini server because I can't afford AWS -_-) and needed to constantly check on it. Being experimental and curious, I tried building a simple system monitor that could be remotely accessed without having to set up industry-standard monitoring tools.
+
+# Features
+
+By simple I mean dead simple, it needs to be able to:
+
+- Read the resources I check on i.e CPU and RAM usage
+- Be accessed remotely
+
+Dead simple. No kidding.
+
+# The stack
+
+- Nextjs with Typescript for the fancy web UI
+- Go (Go lang) for the CLI
+- LocalTunnel to expose it on the internet
+
+# The plan
+
+![/static/images/resystor/plan.png](/static/images/resystor/plan.png)
+
+# The frontend
+
+- Fetch the config
+
+```tsx
+useEffect(() => {
+    (async () => {
+      const res = await fetch(`http://localhost:8080/config`, {
+        cache: "no-cache",
+      });
+
+      const config = (await res.json()) as ServerConfig;
+
+      setConfig(config);
+    })();
+  }, []);
+
+```
+
+The config contains the server's name and the interval, how long until it refreshes.
+
+- Now that we have the config, we need to fetch the initial data and keep re-fetching after each interval we got from the config
+
+```tsx
+const getData = async () => {
+    const res = await fetch(`http://localhost:8080`);
+
+    const data = await res.json();
+
+    setMontitorData(data);
+  };
+
+  useEffect(() => {
+    getData();
+
+    const ms = parseInt(interval) * 1000;
+
+    const intervalFn = setInterval(() => getData(), ms);
+
+    return () => clearInterval(intervalFn);
+  }, []);
+
+```
+
+The data returns the following
+
+```tsx
+interface MonitorData {
+  filesystems: Filesystem[];
+  processes: Process[];
+  resources: Resources;
+}
+
+interface Filesystem {
+  path: string;
+  disk_type: string;
+  device: string;
+  total: number;
+  free: number;
+  used: number;
+  used_percentage: number;
+}
+
+interface Process {
+  name: string;
+  username: string;
+  pid: number;
+  memory_usage: number;
+  cpu_usage: number;
+}
+
+interface Resources {
+  local_ip: string;
+  uptime: Uptime;
+  battery_stats: BatteryStats;
+  memory_stats: MemoryStats;
+  cpu_stats: CpuStats;
+  user_meta: UserMeta;
+}
+
+interface Uptime {
+  days: number;
+  hours: number;
+  minutes: number;
+}
+
+interface BatteryStats {
+  charging_state: string;
+  current_power: number;
+}
+
+interface MemoryStats {
+  total: number;
+  used: number;
+  free: number;
+  used_percentage: number;
+}
+
+interface CpuStats {
+  model: string;
+  cores: number;
+  usages: number[];
+}
+
+interface UserMeta {
+  name: string;
+}
+
+```
+
+# The CLI
+
+We need to ship the UI together with final binary, luckily, Go makes it simple (as it does with all others)
+
+```go
+//go:embed all:frontend/out
+var assets embed.FS
+```
+
+Now when the program runs, we have access to files we can extract to host
+
+```go
+if err := fs.WalkDir(assets, ".", func(path string, d fs.DirEntry, err error) error {
+    if err != nil {
+        return err
+    }
+
+    outPath := filepath.Join(tempDir, path)
+
+    if d.IsDir() {
+        return os.MkdirAll(outPath, 0755)
+    }
+
+    data, err := assets.ReadFile(path)
+    if err != nil {
+        return err
+    }
+
+    return os.WriteFile(outPath, data, 0644)
+}); err != nil {
+    log.Fatal(err)
+}
+```
+
+Let’s serve it up locally using, well, [serve](https://www.npmjs.com/package/serve) at the location of the web files.
+
+```go
+cmd := exec.Command("npx", "--yes", "serve", "-s", fmt.Sprintf("%v/frontend/out", currentDir))
+```
+
+We listen to status updates from the serve program at an interval of 5 seconds.
+
+If its ready, fire up [Localtunnel](https://www.npmjs.com/package/localtunnel) and listen on the running local port, 3000
+
+```go
+for range time.Tick(time.Second * 5) {
+		if strings.Contains(stdBuffer.String(), "Accepting") {
+			log.Println("Getting tunnel url")
+			cmd := exec.Command("npx", "--yes", "localtunnel", "--port", "3000")
+			go cmd.Run()
+			break
+		}
+	}
+```
+
+Now we can get our data using [Gopsutil](https://github.com/shirou/gopsutil) and [battery](https://github.com/distatus/battery). We import them.
+
+```go
+import (
+	"github.com/distatus/battery"
+	"github.com/shirou/gopsutil/cpu"
+	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/mem"
+	"github.com/shirou/gopsutil/process"
+)
+```
+
+Getting the system resources
+
+```go
+func (m *Monitor) GetSystemResources() (data.SystemResources, error) {
+	stats := data.SystemResources{}
+
+	memoryStats, err := mem.VirtualMemory()
+	if err != nil {
+		return stats, err
+	}
+
+	cpuInfo, err := cpu.Info()
+	if err != nil {
+		return stats, err
+	}
+
+	cpuUsages, err := cpu.Percent(0, true)
+	if err != nil {
+		return stats, err
+	}
+
+	upTime, err := utils.GetUptime()
+
+	if err != nil {
+		upTime = data.UpTime{}
+	} else {
+		stats.UpTime = upTime
+	}
+
+	stats.MemoryStats.Total = memoryStats.Total
+	stats.MemoryStats.Free = memoryStats.Free
+	stats.MemoryStats.Used = memoryStats.Used
+	stats.MemoryStats.UsedPercentage = memoryStats.UsedPercent
+
+	stats.CPUStats = data.CPUStats{
+		Model:  cpuInfo[0].ModelName,
+		Cores:  len(cpuInfo),
+		Usages: cpuUsages,
+	}
+
+	batteries, err := battery.GetAll()
+	if err != nil {
+		stats.BatteryStats.CurrentPower = 0
+		stats.BatteryStats.ChargingState = "Unknown"
+	} else if len(batteries) > 0 {
+		batteryStats := batteries[0]
+
+		stats.BatteryStats.CurrentPower = int(math.Round(batteryStats.Current / batteryStats.Full * 100))
+		stats.BatteryStats.ChargingState = batteryStats.State.String()
+	} else {
+
+		stats.BatteryStats.CurrentPower = 100
+		stats.BatteryStats.ChargingState = "Full"
+
+	}
+
+	ip, err := utils.GetLocalIp()
+	if err != nil {
+		return stats, err
+	}
+
+	stats.LocalIP = ip
+
+	return stats, nil
+}
+```
+
+Getting system processes
+
+```go
+func (m *Monitor) GetSystemProcesses() ([]data.Process, error) {
+	stats := []data.Process{}
+
+	allProcesses, err := process.Processes()
+	if err != nil {
+		return stats, err
+	}
+
+	for _, currentProcess := range allProcesses {
+		name, _ := currentProcess.Name()
+		cpuUsage, _ := currentProcess.CPUPercent()
+		memory_usage, _ := currentProcess.MemoryPercent()
+		username, _ := currentProcess.Username()
+		pid := currentProcess.Pid
+
+		process := data.Process{
+			Name:        name,
+			CPUUsage:    cpuUsage,
+			MemoryUsage: float64(memory_usage),
+			Pid:         pid,
+			Username:    username,
+		}
+
+		stats = append(stats, process)
+
+	}
+	return stats, nil
+}func (m *Monitor) GetSystemProcesses() ([]data.Process, error) {
+	stats := []data.Process{}
+
+	allProcesses, err := process.Processes()
+	if err != nil {
+		return stats, err
+	}
+
+	for _, currentProcess := range allProcesses {
+		name, _ := currentProcess.Name()
+		cpuUsage, _ := currentProcess.CPUPercent()
+		memory_usage, _ := currentProcess.MemoryPercent()
+		username, _ := currentProcess.Username()
+		pid := currentProcess.Pid
+
+		process := data.Process{
+			Name:        name,
+			CPUUsage:    cpuUsage,
+			MemoryUsage: float64(memory_usage),
+			Pid:         pid,
+			Username:    username,
+		}
+
+		stats = append(stats, process)
+
+	}
+	return stats, nil
+}
+```
+
+Getting filesystems
+
+```go
+func (m *Monitor) GetFileSystems() ([]data.DiskStats, error) {
+	stats := []data.DiskStats{}
+
+	diskPartitions, err := disk.Partitions(false)
+	if err != nil {
+		return []data.DiskStats{}, err
+	}
+
+	for _, diskPartition := range diskPartitions {
+		if !strings.Contains(diskPartition.Device, "loop") {
+			diskStats, _ := disk.Usage(diskPartition.Mountpoint)
+
+			stats = append(stats, data.DiskStats{
+				Path:           "/",
+				DiskType:       diskStats.Fstype,
+				Device:         diskPartition.Device,
+				Total:          diskStats.Total,
+				Free:           diskStats.Free,
+				Used:           diskStats.Used,
+				UsedPercentage: diskStats.UsedPercent,
+			})
+		}
+	}
+	return stats, nil
+}
+```
+
+Putting all together using the Go HTTP router
+
+```go
+func (s *Server) getStats(w http.ResponseWriter, r *http.Request) {
+	resources, err := s.Monitor.GetSystemResources()
+	if err != nil {
+		http.Error(w, "Failed to System stats", http.StatusInternalServerError)
+		return
+	}
+
+	processes, err := s.Monitor.GetSystemProcesses()
+	if err != nil {
+		http.Error(w, "Failed to System stats", http.StatusInternalServerError)
+		return
+	}
+
+	fileSystems, err := s.Monitor.GetFileSystems()
+	if err != nil {
+		http.Error(w, "Failed to System stats", http.StatusInternalServerError)
+		return
+	}
+
+	json, err := json.Marshal(map[string]interface{}{
+		"resources":   resources,
+		"processes":   processes,
+		"filesystems": fileSystems,
+	})
+	if err != nil {
+		http.Error(w, "Failed to System stats", http.StatusInternalServerError)
+		return
+	}
+
+	w.Write(json)
+}
+```
+
+That’s all folks! A very simple [Remote System Monitor (ReSysTor)](https://owbird.dev/resystor).

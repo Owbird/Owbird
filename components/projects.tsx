@@ -101,8 +101,6 @@ export function Projects() {
 
         <div className="space-y-12">
           {projects.map((project) => {
-            const Icon = project.icon;
-
             return (
               <article
                 key={project.title}

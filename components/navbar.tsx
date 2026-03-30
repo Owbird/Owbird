@@ -1,46 +1,27 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
+import Link from "next/link";
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-sm border-b border-zinc-900"
-          : "bg-transparent"
-      }`}
+      className="fixed left-0 right-0 top-0 z-50 border-b border-zinc-900 bg-background/90 backdrop-blur-sm transition-colors duration-200"
     >
       <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="text-sm font-bold tracking-tighter text-white uppercase">
-          Obed Forkuo
+          <Link href="/">Obed Forkuo</Link>
         </div>
 
         <div className="flex gap-8">
-          {["Projects"].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
-              className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-            >
-              {item}
-            </button>
-          ))}
+          <Link
+            href="/#projects"
+            className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-white"
+          >
+            Projects
+          </Link>
+          <Link
+            href="/blog"
+            className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-white"
+          >
+            Blog
+          </Link>
         </div>
       </div>
     </nav>
