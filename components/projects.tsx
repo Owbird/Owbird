@@ -1,92 +1,23 @@
-import {
-  ExternalLink,
-  Github,
-} from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
-const projects = [
-  {
-    title: "SNetT Engine",
-    description:
-      "Core engine powering SNetT, built for secure file packaging, CLI operations, and distributed secure workflows.",
-    tags: ["Encryption", "CLI", "Security", "PKG"],
-    github: "https://github.com/owbird/snett-engine",
-    url: "https://github.com/owbird/snett-engine",
-  },
-  {
-    title: "SNetT Desktop",
-    description:
-      "Desktop application for secure local file encryption and controlled sharing with optional distributed access layer.",
-    tags: ["Desktop App", "Encryption", "Privacy"],
-    github: "https://github.com/owbird/SNetT",
-    url: "https://github.com/owbird/SNetT",
-  },
-  {
-    title: "ReSysTor",
-    description:
-      "Remote system management CLI for monitoring and controlling distributed infrastructure environments.",
-    tags: ["CLI", "Monitoring", "DevOps", "Go"],
-    github: "https://github.com/owbird/resystor",
-    url: "https://github.com/owbird/resystor/releases",
-  },
-  {
-    title: "Ram Guard",
-    description:
-      "Lightweight CLI utility for monitoring and protecting system memory usage in constrained environments.",
-    tags: ["CLI", "System Monitoring", "Performance"],
-    github: "https://github.com/owbird/ram-guard",
-    url: "https://github.com/owbird/ram-guard/releases",
-  },
-  {
-    title: "Vercel Account Manager",
-    description:
-      "CLI tool for managing multiple Vercel accounts efficiently from a single development environment.",
-    tags: ["CLI", "Dev Tools", "Automation"],
-    github: "https://github.com/owbird/vercel-account-manager",
-    url: "https://github.com/owbird/vercel-account-manager/releases",
-  },
-  {
-    title: "React Utility Belt",
-    description:
-      "Reusable React utilities package designed to accelerate frontend development workflows.",
-    tags: ["React", "NPM Package", "Frontend", "Utilities"],
-    github: "https://github.com/owbird/react-utility-belt",
-    url: "https://www.npmjs.com/package/react-utility-belt",
-  },
-  {
-    title: "KNUST AIM API",
-    description:
-      "REST API improving access and integration of KNUST Academic Information Management systems.",
-    tags: ["REST API", "Integration", "Backend"],
-    github: "https://github.com/owbird/KNUST-AIM-API",
-    url: "https://github.com/owbird/KNUST-AIM-API",
-  },
-  {
-    title: "KNUST AIM Desktop",
-    description:
-      "Desktop client for streamlined access to academic data within the KNUST ecosystem.",
-    tags: ["Desktop App", "Integration", "Institutional Tech"],
-    github: "https://github.com/owbird/KNUST-AIM-Desktop",
-    url: "https://github.com/owbird/KNUST-AIM-Desktop",
-  },
-  {
-    title: "Blue-DOS",
-    description:
-      "Experimental CLI system environment exploring low-level command execution and operating system behavior.",
-    tags: ["CLI", "Systems", "Experimentation"],
-    github: "https://github.com/owbird/blue-dos",
-    url: "https://github.com/owbird/blue-dos",
-  },
-  {
-    title: "One Dev",
-    description:
-      "Unified developer workspace focused on simplifying workflows across multiple tools and environments.",
-    tags: ["Productivity", "Desktop", "Workflow"],
-    github: "https://github.com/owbird/One-Dev",
-    url: "https://one-dev.vercel.app",
-  },
-];
+type Project = {
+  title: string
+  description: string
+  tags: string[]
+  github: string
+  url: string
+}
 
-export function Projects() {
+
+export const dynamic = "force-dynamic";
+
+export async function Projects() {
+  const req = await fetch(
+    "https://port8888.server.owbird.dev/projects.json",
+  );
+
+  const projects = await req.json() as Project[];
+
   return (
     <section id="projects" className="py-24 px-6 bg-background">
       <div className="max-w-4xl mx-auto">
