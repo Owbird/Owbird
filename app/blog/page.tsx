@@ -5,9 +5,35 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { name } from "@/lib/utils";
 
+const siteUrl = "https://owbird.dev";
+
 export const metadata = {
   title: `Blog | ${name}`,
   description: "Owbird Writes",
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
+  openGraph: {
+    type: "website",
+    url: `${siteUrl}/blog`,
+    title: `Blog | ${name}`,
+    description: "Owbird Writes",
+    siteName: name,
+    images: [
+      {
+        url: `${siteUrl}/blog/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Owbird Writes blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Blog | ${name}`,
+    description: "Owbird Writes",
+    images: [`${siteUrl}/blog/opengraph-image`],
+  },
 };
 
 export default async function BlogIndexPage() {

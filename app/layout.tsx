@@ -6,21 +6,22 @@ import Script from "next/script";
 import { name } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: `${name} `,
+  metadataBase: new URL("https://owbird.dev"),
+  title: `${name}`,
   description:
     "Technical founder and systems engineer designing secure infrastructure, developer tooling, and distributed platforms.",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://owbird.dev",
-    title: `${name} `,
+    title: `${name}`,
     description:
       "Designing secure systems, developer tooling, and distributed platforms for emerging markets.",
     siteName: name,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${name} `,
+    title: `${name}`,
     description:
       "Designing secure systems, developer tooling, and distributed platforms for emerging markets.",
   },

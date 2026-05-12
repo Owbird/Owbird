@@ -8,6 +8,8 @@ import { Navbar } from "@/components/navbar";
 import { formatBlogDate, getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { name } from "@/lib/utils";
 
+const siteUrl = "https://owbird.dev";
+
 type BlogPostPageProps = {
   params: Promise<{
     slug: string;
@@ -30,9 +32,40 @@ export async function generateMetadata({
     return {};
   }
 
+  const path = `/blog/${slug}`;
+  const url = `${siteUrl}${path}`;
+  const description = post.description || post.summary;
+
   return {
-    title: `${post.title} | ${name}`,
-    description: post.description || post.summary,
+    title: `${post.title} | Owbird Writes`,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "article",
+      url,
+      title: `${post.title} | Owbird Writes`,
+      description,
+      siteName: name,
+      publishedTime: new Date(post.date).toISOString(),
+      authors: [name],
+      tags: post.tags,
+      images: [
+        {
+          url: `${url}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Owbird Writes`,
+      description,
+      images: [`${url}/opengraph-image`],
+    },
   };
 }
 
