@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import matter from "gray-matter";
 
 const BLOG_DIRECTORY = path.join(process.cwd(), "content", "blog");
 
@@ -16,68 +17,6 @@ export type BlogPost = BlogPostFrontmatter & {
   slug: string;
   body: string;
 };
-
-function parseArray(value: string) {
-  const trimmed = value.trim();
-
-  if (!trimmed.startsWith("[") || !trimmed.endsWith("]")) {
-    return undefined;
-  }
-
-  return trimmed
-    .slice(1, -1)
-    .split(",")
-    .map((item) => item.trim().replace(/^['"]|['"]$/g, ""))
-    .filter(Boolean);
-}
-
-function parseValue(value: string) {
-  const trimmed = value.trim();
-
-  if (trimmed === "true") return true;
-  if (trimmed === "false") return false;
-
-  const arrayValue = parseArray(trimmed);
-  if (arrayValue) return arrayValue;
-
-  return trimmed.replace(/^['"]|['"]$/g, "");
-}
-
-function parseFrontmatter(source: string) {
-  if (!source.startsWith("---")) {
-    return {
-      data: {} as Partial<BlogPostFrontmatter>,
-      content: source.trim(),
-    };
-  }
-
-  const endIndex = source.indexOf("\n---", 3);
-
-  if (endIndex === -1) {
-    return {
-      data: {} as Partial<BlogPostFrontmatter>,
-      content: source.trim(),
-    };
-  }
-
-  const rawFrontmatter = source.slice(3, endIndex).trim();
-  const content = source.slice(endIndex + 4).trim();
-  const data: Record<string, unknown> = {};
-
-  for (const line of rawFrontmatter.split("\n")) {
-    const separatorIndex = line.indexOf(":");
-    if (separatorIndex === -1) continue;
-
-    const key = line.slice(0, separatorIndex).trim();
-    const value = line.slice(separatorIndex + 1);
-    data[key] = parseValue(value);
-  }
-
-  return {
-    data: data as Partial<BlogPostFrontmatter>,
-    content,
-  };
-}
 
 function assertFrontmatter(
   slug: string,
@@ -100,7 +39,7 @@ function assertFrontmatter(
 async function readPostFile(slug: string) {
   const filePath = path.join(BLOG_DIRECTORY, `${slug}.mdx`);
   const source = await fs.readFile(filePath, "utf8");
-  const { data, content } = parseFrontmatter(source);
+  const { data, content } = matter(source);
 
   return {
     slug,
