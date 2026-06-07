@@ -18,21 +18,49 @@ export type BlogPost = BlogPostFrontmatter & {
   body: string;
 };
 
+function coerceBlogDate(value: unknown) {
+  if (value instanceof Date) {
+    return value.toISOString().slice(0, 10);
+  }
+
+  if (typeof value === "string") {
+    const parsed = new Date(value);
+
+    if (!Number.isNaN(parsed.getTime())) {
+      return parsed.toISOString().slice(0, 10);
+    }
+  }
+
+  return null;
+}
+
 function assertFrontmatter(
   slug: string,
-  data: Partial<BlogPostFrontmatter>,
+  data: Record<string, unknown>,
 ): BlogPostFrontmatter {
-  if (!data.title || !data.date) {
+  const date = coerceBlogDate(data.date);
+
+  if (typeof data.title !== "string" || !date) {
     throw new Error(`Post "${slug}" is missing required frontmatter.`);
   }
 
   return {
     title: data.title,
-    date: data.date,
-    tags: data.tags ?? [],
-    draft: data.draft ?? false,
-    summary: data.summary ?? data.description ?? "",
-    description: data.description ?? data.summary ?? "",
+    date,
+    tags: Array.isArray(data.tags) ? data.tags.filter((tag): tag is string => typeof tag === "string") : [],
+    draft: typeof data.draft === "boolean" ? data.draft : false,
+    summary:
+      typeof data.summary === "string"
+        ? data.summary
+        : typeof data.description === "string"
+          ? data.description
+          : "",
+    description:
+      typeof data.description === "string"
+        ? data.description
+        : typeof data.summary === "string"
+          ? data.summary
+          : "",
   };
 }
 
