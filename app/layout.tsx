@@ -5,6 +5,8 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { name } from "@/lib/utils";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://owbird.dev"),
   title: `${name}`,
@@ -34,21 +36,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-QSXV12EN2D"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-QSXV12EN2D');
-        `}
-      </Script>
+      {isProduction ? (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-QSXV12EN2D"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-QSXV12EN2D');
+            `}
+          </Script>
+        </>
+      ) : null}
       <body suppressHydrationWarning>
         {children}
-        <Analytics />
+        {isProduction ? <Analytics /> : null}
       </body>
     </html>
   );
