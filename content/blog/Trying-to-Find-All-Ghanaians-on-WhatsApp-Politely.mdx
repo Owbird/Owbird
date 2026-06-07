@@ -1,0 +1,56 @@
+---
+title: Trying to Find All Ghanaians on WhatsApp, Politely.
+date: 2026-06-05
+tags:
+  - security
+  - privacy
+  - whatsapp
+draft: false
+summary: One boolean. Twelve prefixes. The whole country.
+type: blog-post
+area: Blog
+---
+# Trying to Find All Ghanaians on WhatsApp, Politely.
+
+I had a curious, horrible idea, again. Is there a way we can find all Ghanaian numbers that are registered on WhatsApp?
+Turns out, there is. 
+
+## A disclaimer
+
+Yes, this is a privacy concern. Phone number enumeration is a known attack vector, it's how stalkers find targets, how spammers build lists, how phishing campaigns get seeded. WhatsApp is aware of this class of attack.
+
+I'm publishing this as a PoC to illustrate the exposure, not as a how-to guide.  If you're curious about the technique for research purposes: cool. If you're thinking about running this to harvest contacts: **please don't**.
+
+## The idea
+
+Ghana’s phone number system uses 3 digit prefixes to tell the network and 7 digit suffixes for the actual number. We'll be using these at this time of writing.
+
+```
+020, 050, 023, 024, 025, 053, 054, 055, 059, 026, 027, 056
+```
+
+There are 12 network prefixes × 10,000,000 possible suffixes = **120 million numbers to check**. Realistically, most of those don't exist, but any registered ones will light up.
+
+## The build
+
+The code itself is remarkably simple. I used [whatsapp-web.js ](https://wwebjs.dev/)with a `LocalAuth` strategy (so I don't have to scan the QR code every run), Puppeteer under the hood for the browser automation, and a snapshot file to resume progress across restarts.
+
+```js
+const isRegistered = await client.isRegisteredUser(number);
+
+if (isRegistered) {
+  // append to numbers/registered.json
+}
+
+await fs.writeFile("snapshot.json", JSON.stringify({ prefixIndex: i, numberIndex: j }));
+await sleep(1800); // 30 minutes between checks
+```
+
+The 30 minute interval is to prevent the account from being banned. I learnt it the hard way. They do rate-limit these checks. Hit them too fast and your account goes to recycle bin. 
+
+In practice, a full sweep of all 120M numbers at this rate would take **6,849 years**. But that's fine for a PoC. The point was to demonstrate the technique, not to actually enumerate every Ghanaian on WhatsApp.
+## The results
+
+I tested the range `0200000000` to `0200005670`, a sample of 5,670 numbers from the `020` prefix. Of those, 402 were registered on WhatsApp, roughly 7.1% of the numbers tested.
+
+*Code for this project is on [GitHub](https://github.com/Owbird/WhatsAppPinger)*
