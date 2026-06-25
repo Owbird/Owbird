@@ -111,6 +111,37 @@ export async function getPostBySlug(slug: string) {
   }
 }
 
+export async function getRelatedPosts(slug: string, limit = 2) {
+  const currentPost = await getPostBySlug(slug);
+
+  if (!currentPost) {
+    return [];
+  }
+
+  const posts = await getAllPosts();
+  const currentTags = new Set(currentPost.tags ?? []);
+
+  return posts
+    .filter((post) => post.slug !== slug)
+    .map((post) => {
+      const sharedTags = (post.tags ?? []).filter((tag) => currentTags.has(tag)).length;
+
+      return {
+        post,
+        sharedTags,
+      };
+    })
+    .sort((left, right) => {
+      if (right.sharedTags !== left.sharedTags) {
+        return right.sharedTags - left.sharedTags;
+      }
+
+      return right.post.date.localeCompare(left.post.date);
+    })
+    .slice(0, limit)
+    .map(({ post }) => post);
+}
+
 export function formatBlogDate(date: string) {
   return new Intl.DateTimeFormat("en", {
     month: "long",
