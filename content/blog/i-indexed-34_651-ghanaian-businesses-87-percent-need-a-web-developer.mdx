@@ -1,0 +1,116 @@
+---
+title: I Indexed 34,651 Ghanaian Businesses. 87% Need a Web Developer.
+date: 2026-07-17
+tags: ["lead-generation", "web-development"]
+draft: false
+summary: 34,651 Ghanaian businesses indexed. 87% need a website. Here's how to find them, and build it
+---
+
+# I Indexed 34,651 Ghanaian Businesses. 87% Need a Web Developer.
+
+A few weeks ago, a conversation with a friend unexpectedly turned into a new side project.
+
+He was talking about starting a web development agency.
+
+Like many developers, building websites wasn't the hard part. Finding businesses that actually needed one was.
+
+Everyone says the same thing.
+
+> Cold email businesses.  
+> Reach out on LinkedIn.  
+> Walk into shops.  
+> Ask for referrals.
+
+None of those methods scale, and most of them involve spending hours searching before you even write the first email.
+
+That got me thinking.
+
+There had to be a better way.
+
+## The Question
+
+Instead of asking:
+
+_How do I find clients?_
+
+I started asking:
+
+_Where does information about businesses already exist?_
+
+The obvious answer was [Yellow Pages Ghana](https://yellowpages.com.gh/), which I had come across ages ago.
+
+More than 34,000 businesses are already listed there, complete with contact information and, in many cases, whether they have a website.
+
+If I could automatically inspect every listing, I could build a searchable database of businesses that either:
+
+- don't have a website at all, or
+- have a website that's no longer working.
+
+That sounded far more useful than manually browsing page after page.
+
+So I started building.
+
+## Building the Pipeline
+
+The project became much more than a simple scraper being built in [Go](https://go.dev/).
+
+The first step was crawling the Yellow Pages sitemap. Instead of randomly navigating pages, I traversed the sitemap to discover every business listing efficiently.
+
+Once I had every business URL, I built an indexing process that visited each page and extracted information such as:
+
+- Business name
+- Location
+- Website (if one existed)
+
+But finding a website wasn't enough.
+
+A business might list a website that hasn't worked in years.
+
+So for every website discovered, the indexer also attempted to visit it to determine whether it was actually online.
+
+That allowed me to classify businesses into two groups:
+
+- Businesses with no website.
+- Businesses whose website exists but is no longer reachable.
+
+Those are two very different kinds of opportunities.
+
+## Turning Data Into Something Useful
+
+Raw JSON isn't helpful to anyone.
+
+So in collaboration with [Vercel's v0](https://v0.dev/), we built a simple interface where you can search businesses, filter by status, and quickly inspect each company. To view the contact details, you get routed to the Yellow Pages listing for that company, which helps maintain traffic to them.
+
+Instead of digging through directories manually, you can immediately find businesses that may genuinely benefit from a modern web presence.
+
+<img src="/static/images/blog/needsaweb.png" alt="Screenshot" />
+
+## What Surprised Me
+
+The most surprising part wasn't how easy it was to collect the data.
+
+Yellow Pages itself claims 34,659 businesses listed. The indexer successfully crawled 34,651 of them. A handful of pages failed to crawl, but close enough to call it a full sweep.
+
+Of those:
+
+- **14,060 (40.6%)** have no website at all.
+- **16,238 (46.9%)** list a website that's dead, meaning unreachable, expired, or otherwise gone.
+- Only **4,353 (12.6%)** have a website that's actually live.
+
+That means **30,298 businesses,** or **87.4%** of the entire dataset, are sitting on an opportunity right now.
+
+What surprised me most wasn't the no-website group. It was that dead websites outnumber no-website-at-all by a wide margin. More businesses built something and let it rot than never built anything in the first place. That's a different problem than "hasn't gone digital yet"; it's abandoned infrastructure, expired domains, and forgotten projects.
+
+## More Than a Lead List
+
+Instead of building another portfolio website and hoping clients would find you, we built a system that you can use to identify potential clients before the first outreach email is ever written.
+
+That's a much better place to start.
+
+## What's Next
+
+This is only the first version.
+
+If you’re a freelancer in Ghana, try the tool here: [https://needsaweb.owbird.dev/](https://needsaweb.owbird.dev/). I’d love to hear if it helps you land a client
+
+And because it's open source, anyone can explore the code, improve it, or adapt it for their own market. Available here: [https://github.com/owbird/needsawebsite](https://github.com/owbird/needsawebsite)

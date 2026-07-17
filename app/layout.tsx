@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "katex/dist/katex.min.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { name } from "@/lib/utils";
