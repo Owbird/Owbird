@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Placeholder Paper Title",
+    "description": "Short abstract or summary of the paper goes here. Replace this entry with a real publication.",
+    "tags": ["Security", "Networking"],
+    "year": "2024",
+    "url": "https://example.com/paper-1"
+  },
+  {
+    "title": "Another Placeholder Paper",
+    "description": "Short abstract or summary of the paper goes here. Replace this entry with a real publication.",
+    "tags": ["Systems"],
+    "year": "2023",
+    "url": "https://example.com/paper-2"
+  }
+]

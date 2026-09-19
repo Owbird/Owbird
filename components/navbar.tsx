@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { name } from "@/lib/utils";
+
+const isProduction = process.env.NODE_ENV === "production";
+
 export function Navbar() {
   return (
     <nav
@@ -17,6 +20,14 @@ export function Navbar() {
           >
             Projects
           </Link>
+          {isProduction ? null : (
+            <Link
+              href="/#research"
+              className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-white"
+            >
+              Research
+            </Link>
+          )}
           <Link
             href="/blog"
             className="text-[11px] font-mono uppercase tracking-[0.2em] text-zinc-500 transition-colors hover:text-white"
