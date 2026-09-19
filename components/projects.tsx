@@ -1,4 +1,5 @@
 import { ExternalLink, Github } from "lucide-react";
+import projects from "@/content/projects.json";
 
 type Project = {
   title: string
@@ -8,16 +9,7 @@ type Project = {
   url: string
 }
 
-
-export const dynamic = "force-dynamic";
-
-export async function Projects() {
-  const req = await fetch(
-    "https://port8888.server.owbird.dev/projects.json",
-  );
-
-  const projects = await req.json() as Project[];
-
+export function Projects() {
   return (
     <section id="projects" className="py-24 px-6 bg-background">
       <div className="max-w-4xl mx-auto">
@@ -31,7 +23,7 @@ export async function Projects() {
         </div>
 
         <div className="space-y-12">
-          {projects.map((project) => {
+          {(projects as Project[]).map((project) => {
             return (
               <article
                 key={project.title}
