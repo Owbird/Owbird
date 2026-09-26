@@ -4,13 +4,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-12 px-6 border-t border-zinc-900 bg-background">
-      <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-zinc-600 text-[11px] font-mono uppercase tracking-widest">
+    <footer className="border-t border-zinc-900 px-6 py-14">
+      <div className="mx-auto flex max-w-4xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-600">
           © {currentYear} {name}
         </p>
-        <p className="text-zinc-700 text-[10px] font-mono uppercase tracking-widest">
-          Software Engineer
+
+        <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-700">
+          Software engineer &amp; systems researcher
         </p>
       </div>
     </footer>

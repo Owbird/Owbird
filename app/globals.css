@@ -2,15 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Mono micro-label used for eyebrows, meta columns and tags. */
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-600;
   }
 }
 
@@ -44,8 +43,15 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-white/10 selection:text-white;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    @apply bg-background font-sans text-foreground antialiased selection:bg-white/15 selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Anchored sections sit below the fixed navbar. */
+  [id] {
+    scroll-margin-top: 6rem;
   }
 }
 

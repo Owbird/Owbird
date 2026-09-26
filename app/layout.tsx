@@ -2,15 +2,28 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { name } from "@/lib/utils";
 
 const isProduction = process.env.NODE_ENV === "production";
+
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://owbird.dev"),
   title: `${name}`,
   description:
-    "Technical founder and systems engineer designing secure infrastructure, developer tooling, and distributed platforms.",
+    "Software engineer and systems researcher designing secure infrastructure, developer tooling, and distributed platforms.",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -34,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       {isProduction ? (
         <>
           <Script

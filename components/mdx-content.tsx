@@ -9,19 +9,19 @@ const mdxComponents = {
   h1: (props: ComponentPropsWithoutRef<"h1">) => (
     <h1
       {...props}
-      className="text-3xl font-semibold tracking-tight text-white"
+      className="text-3xl font-semibold tracking-tighter text-white"
     />
   ),
   h2: (props: ComponentPropsWithoutRef<"h2">) => (
     <h2
       {...props}
-      className="pt-6 text-2xl font-semibold tracking-tight text-white"
+      className="pt-10 text-2xl font-semibold tracking-tight text-white"
     />
   ),
   h3: (props: ComponentPropsWithoutRef<"h3">) => (
     <h3
       {...props}
-      className="pt-4 text-xl font-semibold tracking-tight text-white"
+      className="pt-6 text-lg font-semibold tracking-tight text-white"
     />
   ),
   p: (props: ComponentPropsWithoutRef<"p">) => (
@@ -43,13 +43,13 @@ const mdxComponents = {
   blockquote: (props: ComponentPropsWithoutRef<"blockquote">) => (
     <blockquote
       {...props}
-      className="border-l border-zinc-700 pl-5 text-zinc-400"
+      className="border-l-2 border-zinc-800 pl-6 italic text-zinc-400"
     />
   ),
   pre: (props: ComponentPropsWithoutRef<"pre">) => (
     <pre
       {...props}
-      className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-950 p-4 text-sm leading-7 text-zinc-200"
+      className="overflow-x-auto rounded-sm border border-zinc-900 bg-zinc-950 p-5 font-mono text-[13px] leading-7 text-zinc-300"
     />
   ),
   code: (props: ComponentPropsWithoutRef<"code">) => {
@@ -59,7 +59,7 @@ const mdxComponents = {
       return (
         <code
           {...props}
-          className="rounded bg-white/5 px-1.5 py-0.5 text-[0.95em] text-zinc-200"
+          className="rounded-sm border border-zinc-900 bg-white/5 px-1.5 py-0.5 font-mono text-[0.85em] text-zinc-200"
         />
       );
     }
@@ -70,7 +70,7 @@ const mdxComponents = {
     <img
       {...props}
       alt={props.alt ?? ""}
-      className="h-auto w-full rounded-lg border border-zinc-800 bg-zinc-950 object-cover"
+      className="h-auto w-full rounded-sm border border-zinc-900 bg-zinc-950 object-cover"
     />
   ),
 };

@@ -1,4 +1,7 @@
-import { FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+
+import { Row, Section } from "@/components/section";
+import { TagList } from "@/components/tag";
 import papers from "@/content/research-papers.json";
 
 type Paper = {
@@ -6,67 +9,47 @@ type Paper = {
   description: string
   tags: string[]
   year: string
-  url: string
+  url?: string
 }
 
-export function ResearchPapers() {
+export function ResearchPapers({ index }: { index: string }) {
   return (
-    <section id="research" className="py-24 px-6 bg-background">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold tracking-tight text-white mb-2">
-            Research Papers
-          </h2>
-          <p className="text-zinc-500 font-medium">
-            Publications and technical write-ups.
-          </p>
-        </div>
-
-        <div className="space-y-12">
-          {(papers as Paper[]).map((paper) => {
-            return (
-              <article
-                key={paper.title}
-                className="group relative grid md:grid-cols-[1fr_2fr] gap-8 pb-12 border-b border-zinc-900 last:border-0"
+    <Section
+      id="research"
+      index={index}
+      label="Research"
+      title="Papers"
+      description="Measurement studies in security, privacy, and attack-surface analysis."
+    >
+      <div>
+        {(papers as Paper[]).map((paper) => (
+          <Row key={paper.title} meta={paper.year}>
+            {paper.url ? (
+              <a
+                href={paper.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-baseline gap-2"
               >
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-zinc-300 transition-colors">
-                    {paper.title}
-                  </h3>
-                  <p className="text-xs font-mono text-zinc-500">{paper.year}</p>
-                  <div className="flex gap-4 pt-2">
-                    <a
-                      href={paper.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-medium"
-                    >
-                      <FileText className="h-3.5 w-3.5" />
-                      READ PAPER
-                    </a>
-                  </div>
-                </div>
+                <h3 className="max-w-2xl text-xl font-medium leading-snug tracking-tight text-white transition-colors group-hover:text-zinc-300">
+                  {paper.title}
+                </h3>
+                <ArrowUpRight className="h-4 w-4 flex-none translate-y-0.5 text-zinc-700 transition-colors group-hover:text-zinc-400" />
+              </a>
+            ) : (
+              <h3 className="max-w-2xl text-xl font-medium leading-snug tracking-tight text-white">
+                {paper.title}
+              </h3>
+            )}
 
-                <div className="space-y-6">
-                  <p className="text-zinc-400 leading-relaxed text-sm md:text-base">
-                    {paper.description}
-                  </p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-2">
-                    {paper.tags.map((item) => (
-                      <span
-                        key={item}
-                        className="text-[10px] font-mono text-zinc-500 bg-zinc-900/50 px-2 py-0.5 rounded border border-zinc-800"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
+              {paper.description}
+            </p>
+
+            <TagList tags={paper.tags} />
+          </Row>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

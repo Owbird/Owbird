@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { formatBlogDate, getAllPosts } from "@/lib/blog";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { Row } from "@/components/section";
+import { TagList } from "@/components/tag";
 import { name } from "@/lib/utils";
 
 const siteUrl = "https://owbird.dev";
@@ -43,56 +46,40 @@ export default async function BlogIndexPage() {
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
 
-      <section className="px-6 pb-24 pt-32">
+      <section className="px-6 pb-28 pt-44">
         <div className="mx-auto max-w-4xl">
           <div className="mb-16 max-w-2xl">
-            <p className="mb-4 text-xs font-mono uppercase tracking-[0.3em] text-zinc-500">
-              Blog
-            </p>
-            <h1 className="text-4xl font-semibold tracking-tight text-white">
+            <p className="label">Writing</p>
+
+            <h1 className="mt-4 text-4xl font-semibold tracking-tighter text-white md:text-6xl">
               Owbird Writes
             </h1>
-            <p className="mt-5 text-base leading-8 text-zinc-400">
+
+            <p className="mt-6 text-base leading-8 text-zinc-400">
               A personal log of ideas, experiments, and things I’m figuring out,
               as I build, break, and refine systems over time.
             </p>
           </div>
 
-          <div className="space-y-10">
+          <div>
             {posts.map((post) => (
-              <article
-                key={post.slug}
-                className="grid gap-5 border-b border-zinc-900 pb-10 md:grid-cols-[160px_1fr]"
-              >
-                <div className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-600">
-                  {formatBlogDate(post.date)}
-                </div>
+              <Row key={post.slug} meta={formatBlogDate(post.date)}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group inline-flex items-baseline gap-2"
+                >
+                  <h2 className="text-xl font-medium tracking-tight text-white transition-colors group-hover:text-zinc-300">
+                    {post.title}
+                  </h2>
+                  <ArrowUpRight className="h-4 w-4 flex-none translate-y-0.5 text-zinc-700 transition-colors group-hover:text-zinc-400" />
+                </Link>
 
-                <div>
-                  <Link href={`/blog/${post.slug}`} className="inline-block">
-                    <h2 className="text-2xl font-semibold tracking-tight text-white transition-colors hover:text-zinc-300">
-                      {post.title}
-                    </h2>
-                  </Link>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">
+                  {post.summary || post.description}
+                </p>
 
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">
-                    {post.summary || post.description}
-                  </p>
-
-                  {post.tags?.length ? (
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded border border-zinc-800 bg-zinc-900/50 px-2 py-0.5 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-500"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                </div>
-              </article>
+                <TagList tags={post.tags} />
+              </Row>
             ))}
           </div>
         </div>
