@@ -9,32 +9,45 @@
 
   /* Mono micro-label used for eyebrows, meta columns and tags. */
   .label {
-    @apply font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-600;
+    @apply font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-500;
+  }
+
+  /* Observatory subtle grid overlay */
+  .observatory-grid {
+    background-size: 60px 60px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+
+  /* Observatory radial vignette */
+  .observatory-vignette {
+    background: radial-gradient(circle at 50% 30%, rgba(12, 16, 24, 0.4) 0%, rgba(4, 5, 8, 0.95) 80%);
   }
 }
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 228 20% 3%; /* Midnight Obsidian #050608 */
+    --foreground: 210 20% 98%;
+    --card: 228 18% 4.5%;
+    --card-foreground: 210 20% 98%;
+    --popover: 228 18% 4.5%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 228 20% 4%;
+    --secondary: 225 10% 12%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 225 10% 12%;
+    --muted-foreground: 218 10% 60%;
+    --accent: 225 10% 12%;
+    --accent-foreground: 210 20% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.25rem;
+    --border: 225 10% 12%;
+    --input: 225 10% 12%;
+    --ring: 210 20% 80%;
+    --radius: 0.2rem;
   }
 }
 
@@ -43,11 +56,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background font-sans text-foreground antialiased selection:bg-white/15 selection:text-white;
+    @apply bg-background font-sans text-foreground antialiased selection:bg-zinc-800 selection:text-white overflow-x-hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
   }
   html {
     scroll-behavior: smooth;
+    background-color: #050608;
   }
   /* Anchored sections sit below the fixed navbar. */
   [id] {
@@ -55,20 +69,20 @@
   }
 }
 
-/* Custom scrollbar - Minimal */
+/* Custom scrollbar - Minimal Observatory Steel */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #050608;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
-  border-radius: 0;
+  background: #1e222d;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: #3b4252;
 }

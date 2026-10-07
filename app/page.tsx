@@ -1,21 +1,25 @@
-import { Navbar } from '@/components/navbar'
-import { Hero } from '@/components/hero'
-import { Projects } from '@/components/projects'
-import { ResearchPapers } from '@/components/research-papers'
-import { BlogSection } from '@/components/blog-section'
-import { Footer } from '@/components/footer'
-
-const showResearch = process.env.NODE_ENV !== "production";
+import { Navbar } from "@/components/navbar";
+import { HeroObservatory } from "@/components/sections/hero-observatory";
+import { ProjectsSection } from "@/components/sections/projects-section";
+import { ResearchPapersSection } from "@/components/sections/research-section";
+import { GitHubSection } from "@/components/sections/github-section";
+import { WritingSection } from "@/components/sections/writing-section";
+import { AboutSection } from "@/components/sections/about-section";
+import { ContactSection } from "@/components/sections/contact-section";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 export default function Home() {
   return (
-    <main className="bg-background text-foreground min-h-screen">
+    <main className="relative bg-[#050608] text-foreground min-h-screen overflow-x-hidden">
+      <CustomCursor />
       <Navbar />
-      <Hero />
-      <Projects index="001" />
-      {showResearch ? <ResearchPapers index="002" /> : null}
-      <BlogSection index={showResearch ? "003" : "002"} />
-      <Footer />
+      <HeroObservatory />
+      <ProjectsSection index="001" />
+      <ResearchPapersSection index="002" />
+      <GitHubSection />
+      <WritingSection index="003" />
+      <AboutSection index="004" />
+      <ContactSection index="005" />
     </main>
-  )
+  );
 }
