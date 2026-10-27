@@ -1,0 +1,199 @@
+---
+title: "I Looked Up 1.4 Million IP Addresses. Here's What Showed Up."
+date: 2026-10-27
+tags: ["internet", "ghana", "security", "data"]
+draft: true
+summary: 1.4 million addresses, 25,006 records, and an unexpectedly complicated question about Ghana's internet.
+---
+
+# I Looked Up 1.4 Million IP Addresses. Here's What Showed Up.
+
+After trying to find Ghanaian numbers on WhatsApp and indexing Ghanaian businesses, apparently the next reasonable thing to look at was the internet itself.
+
+Specifically, Ghana's internet.
+
+Which networks are associated with the country? What address space do they announce? And what can we see about those addresses from the outside?
+
+Simple questions.
+
+Naturally, I ended up with multiple workers and a shared Postgres database.
+
+## First, Find Ghana's Internet
+
+There is no convenient `ghana.internet` file containing everything we need.
+
+The starting point was Autonomous System Numbers, or ASNs.
+
+An autonomous system is a network, or collection of networks, operating under a common routing policy. Internet providers, universities, hosting companies and other organisations can operate them.
+
+The ASN identifies that system.
+
+Those networks announce IP prefixes, which describe blocks of addresses they can route traffic to.
+
+So the plan was:
+
+1. Find ASNs associated with Ghana.
+2. Collect their announced IPv4 prefixes.
+3. Remove overlapping address ranges.
+4. Look up the resulting addresses.
+5. Store whatever came back.
+
+I used RIPEstat for country resource and routing information, with APNIC's AS population measurements providing another view of networks observed serving users in Ghana.
+
+These sources answer different questions. Registration, routing and measured user presence are related, but they are not interchangeable.
+
+That distinction becomes important later.
+
+For the collection run discussed here, the route table contained **94 ASNs**. After collapsing the lookup ranges, the address pool contained **1,468,160 unique IPv4 addresses**.
+
+Now we had something to work through.
+
+## Someone Already Did the Scanning
+
+I did not send probes to all 1.4 million addresses.
+
+Instead, I queried [Shodan's InternetDB](https://internetdb.shodan.io/), which provides existing observations about an IP address.
+
+The returned records can contain:
+
+- Reported open ports
+- Hostnames
+- Software identifiers
+- Classification tags
+- Vulnerability identifiers
+
+The distinction matters.
+
+This project collected an existing measurement source. It did not independently verify that every reported service was still reachable when the lookup happened.
+
+A successful lookup tells us what InternetDB reported. It does not turn the collector into an all-seeing national network monitor.
+
+Disappointing, but fair.
+
+## Making It Survive Its Own Ambition
+
+The individual lookup was the easy part.
+
+Doing it repeatedly, keeping track of progress and recovering when something stopped was where the project grew legs.
+
+The collection needed to remember which addresses had been processed, distinguish an empty result from a failed request, and retry temporary failures.
+
+Then there were rate limits.
+
+Increasing concurrency sounds productive until the server starts responding with HTTP 429.
+
+At that point, your very fast collector becomes a very fast way to be told to wait.
+
+The system grew into distributed workers sharing a Neon Postgres database. Work was split into jobs, with leases so a worker could claim a batch without another worker processing the same job at the same time.
+
+The database tracked observations, retries, worker heartbeats and pacing.
+
+If a worker disappeared, the work could become available again after its lease expired.
+
+The goal was to keep making progress without needing to restart the whole thing whenever one machine had other plans.
+
+## What Came Back
+
+At the time I checked the database, the results were:
+
+| Lookup outcome | Addresses |
+|---|---:|
+| InternetDB record returned | **25,006** |
+| No data returned | **1,443,136** |
+| Retry pending | **5** |
+| Retry attempts exhausted | **13** |
+| **Total** | **1,468,160** |
+
+About **1.7%** of the address pool returned records.
+
+The latest recorded lookups were on **22 October 2026**. These figures describe that collection snapshot.
+
+The temptation is to look at the other 98.3% and declare it empty.
+
+We cannot do that.
+
+“No data” means the source returned no record. It does not establish that the address was unused, that no device existed, or that whatever was there was secure.
+
+An empty lookup is an empty lookup.
+
+## The Ports Were Interesting
+
+Among the 25,006 addresses with records, these were the most frequently reported ports:
+
+| Port | Addresses reporting it |
+|---|---:|
+| 161 | **7,467** |
+| 7547 | **6,900** |
+| 80 | **4,236** |
+| 443 | **3,453** |
+| 22 | **3,377** |
+| 2000 | **2,063** |
+| 179 | **1,872** |
+| 123 | **1,460** |
+| 8291 | **1,445** |
+| 53 | **839** |
+
+Ports **161 and 7547 each appeared on more addresses than either 80 or 443**.
+
+That is a more interesting starting point than simply counting websites.
+
+It raises questions about which networks contribute those observations and how much of the visible picture comes from network infrastructure rather than conventional web hosting.
+
+The next step is to break the distribution down by network and examine the accompanying metadata.
+
+A port number alone does not prove which application is running, how it is configured, or whether it is vulnerable.
+
+Also, these counts overlap. One address can report several ports, so adding the rows together would not give us a device count.
+
+## There Was More Than a Port List
+
+Of the addresses with records:
+
+- **3,896** included at least one hostname.
+- **5,924** included at least one software identifier.
+
+InternetDB also supplied tags. These included **670 addresses tagged `eol-product`** and **134 tagged `eol-os`**.
+
+Those are source classifications, not findings I independently validated.
+
+They are useful leads for understanding the dataset. They are not enough to announce that hundreds of machines have been confirmed vulnerable.
+
+That would be a different investigation.
+
+## The Country Boundary Problem
+
+The awkward part of building a Ghana Internet Atlas is defining what belongs in it.
+
+A network associated with Ghana can announce addresses used outside Ghana.
+
+A global provider can serve Ghanaian users without its entire infrastructure being located here.
+
+And an announced prefix tells us something about routing. It does not provide a street address.
+
+So collecting every prefix from every relevant ASN can quietly expand the project from “Ghana's internet” to “Ghana and several unexpected international guests.”
+
+This means the current address pool should be understood as a scope built from network associations, not a verified inventory of equipment physically inside Ghana.
+
+Geographic validation needs its own work.
+
+The name of the project does not perform geolocation. Unfortunately.
+
+## What the Atlas Is Becoming
+
+The useful part is the structure this creates.
+
+We can compare reported service patterns across networks, examine where InternetDB has records and where it does not, and repeat the collection to see how the observations change.
+
+We can also make the information easier to explore than a collection of API responses.
+
+That is the direction of the **Ghana Internet Atlas**: a way to investigate the networks associated with Ghana, while keeping the source, collection date and limits of each observation visible.
+
+I also built an explorer for the data, so you can look through the networks and observations yourself. The public link will be added here when the explorer is deployed.
+
+Public release of the underlying records is a separate question. Access to an API does not automatically settle redistribution rights, so that part still needs clarification.
+
+For now, the collection has given us **25,006 addresses with records**, a set of patterns worth investigating, and a much better appreciation of how difficult it is to put a national boundary around a network.
+
+I wanted a little map.
+
+Apparently, the map needs a methodology section.
